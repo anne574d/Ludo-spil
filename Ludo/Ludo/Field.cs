@@ -43,6 +43,13 @@ namespace Ludo
             Pieces.Remove(piece);
         }
 
+        public void Print()
+        {
+            Console.Write("+----+");
+
+            Console.Write("+----+");
+        }
+
         public List<Piece> Pieces; // TODO set to private?
 
         string currentColor;

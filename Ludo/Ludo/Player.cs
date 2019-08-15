@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Ludo
 {
@@ -44,17 +45,17 @@ namespace Ludo
         {
             List<int> res = new List<int>();
             bool valid;
+
             foreach(var p1 in pieces)
             {
-                valid = true;
-                foreach (var p2 in pieces)
+                if (p1.Position == -1)
                 {
-                    if (p1.CanExitStart(diceroll))
-                    {
-                        valid = true;
-                        break;
-                    }
-                    else if (p1 != p2)
+                    valid = p1.CanLeaveStart(diceroll);
+                }
+                else
+                {
+                    valid = true;
+                    foreach (var p2 in pieces)
                     {
                         valid &= !p1.Overtakes(p2, diceroll);
                     }

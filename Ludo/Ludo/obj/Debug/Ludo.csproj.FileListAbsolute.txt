@@ -5,3 +5,10 @@ P:\H1\ObjektOrienteret\Ludo\Ludo\obj\Debug\Ludo.csprojAssemblyReference.cache
 P:\H1\ObjektOrienteret\Ludo\Ludo\obj\Debug\Ludo.csproj.CoreCompileInputs.cache
 P:\H1\ObjektOrienteret\Ludo\Ludo\obj\Debug\Ludo.exe
 P:\H1\ObjektOrienteret\Ludo\Ludo\obj\Debug\Ludo.pdb
+P:\H1\ObjektOrienteretProgrammering\Ludo\Ludo\bin\Debug\Ludo.exe.config
+P:\H1\ObjektOrienteretProgrammering\Ludo\Ludo\bin\Debug\Ludo.exe
+P:\H1\ObjektOrienteretProgrammering\Ludo\Ludo\bin\Debug\Ludo.pdb
+P:\H1\ObjektOrienteretProgrammering\Ludo\Ludo\obj\Debug\Ludo.csprojAssemblyReference.cache
+P:\H1\ObjektOrienteretProgrammering\Ludo\Ludo\obj\Debug\Ludo.csproj.CoreCompileInputs.cache
+P:\H1\ObjektOrienteretProgrammering\Ludo\Ludo\obj\Debug\Ludo.exe
+P:\H1\ObjektOrienteretProgrammering\Ludo\Ludo\obj\Debug\Ludo.pdb

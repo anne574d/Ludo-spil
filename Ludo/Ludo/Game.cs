@@ -18,6 +18,11 @@ namespace Ludo
 
         private void setupGame()
         {
+            Console.SetWindowSize(68,32);
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Clear();
+
             players = new List<Player>();
             die = new Random();
 
@@ -65,6 +70,7 @@ namespace Ludo
             {
                 foreach (var player in players)
                 {
+                    Console.Clear();
                     playerTurn(player);
                 }
             }
@@ -72,6 +78,7 @@ namespace Ludo
 
         private void playerTurn(Player player)
         {
+            ChangeFontColor(player.Color);
             Console.Write($"{captitalize(player.Color)}'s turn. Press ENTER to roll die...");
             Console.ReadLine();
             int roll = rollDie();
@@ -81,7 +88,8 @@ namespace Ludo
 
             if (validMoves.Count == 0)
             {
-                Console.WriteLine("No valid moves available. ");
+                Console.Write("No valid moves available. ");
+                Console.ReadLine();
             }
             else
             {
@@ -89,19 +97,22 @@ namespace Ludo
                 string input;
                 do
                 {
-                    Console.WriteLine($"Select a piece to move ({string.Join(", ", validMoves)}): ");
+                    Console.Write($"Select a piece to move ({string.Join(", ", validMoves)}): ");
                     input = Console.ReadLine();
                 } while (!int.TryParse(input, out selectedPiece) || !validMoves.Contains(selectedPiece));
 
                 player.GetPiece(selectedPiece).DebugPrint(); // TODO remove
 
-                // remove piece from old field
-                board[player.GetPiece(selectedPiece).Position].OutgoingPiece(player.GetPiece(selectedPiece)); // account for -1 = start
+                if (player.GetPiece(selectedPiece).Position != -1)
+                {
+                    // remove piece from old field
+                    board[player.GetPiece(selectedPiece).Position].OutgoingPiece(player.GetPiece(selectedPiece));
+                }
                 // move piece
                 player.GetPiece(selectedPiece).Move(roll);
                 // update new field
                 board[player.GetPiece(selectedPiece).Position].IncomingPiece(player.GetPiece(selectedPiece));
-
+                
                 player.GetPiece(selectedPiece).DebugPrint(); // TODO remove
             }
         }
@@ -114,6 +125,18 @@ namespace Ludo
         private int rollDie()
         {
             return die.Next(1, 7);
+        }
+
+        public static void ChangeFontColor(string color)
+        {
+            switch (color)
+            {
+                case "yellow": Console.ForegroundColor = ConsoleColor.DarkYellow; break;
+                case "blue": Console.ForegroundColor = ConsoleColor.Blue; break;
+                case "red": Console.ForegroundColor = ConsoleColor.Red; break;
+                case "green": Console.ForegroundColor = ConsoleColor.DarkGreen; break;
+                default: Console.ForegroundColor = ConsoleColor.Black; break;
+            }
         }
 
         Field[] board;

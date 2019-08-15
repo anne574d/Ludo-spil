@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Ludo
 {
@@ -83,25 +84,42 @@ namespace Ludo
         // /////////////////////////////////////////////////////////////////
         // Checking functions //////////////////////////////////////////////
         // /////////////////////////////////////////////////////////////////
-        public bool Overtakes(Piece p, int diceroll)
-        {
-            return (this.Position + diceroll > p.Position);
-        }
-
-        public bool CanExitStart(int diceroll)
-        {
-            return (Position == -1 && diceroll == 6);
-        }
-
         public bool IsHome()
         {
             return home;
         }
 
-        // /////////////////////////////////////////////////////////////////
-        // Color specific positions ////////////////////////////////////////
-        // /////////////////////////////////////////////////////////////////
-        public int startExit()
+        public bool Overtakes(Piece p, int diceroll)
+        {
+            // TODO: Find a way that check in the 51->0 border
+            bool res;
+            if (p == this)
+            {
+                // doesn't overtake itself
+                res = false;
+            }
+            else if (p.Position == -1)
+            {
+                // cannot overtake someone in start
+                res = false;
+            }
+            else
+            {
+                res = (Position < p.Position && Position + diceroll > p.Position);
+                Debug.WriteLine($"{res}: {Color}{Number} as pos {Position} overtakes {p.Color}{p.Number} at pos {p.Position} (roll: {diceroll})");
+            }
+            return res;
+        }
+
+        public bool CanLeaveStart(int diceroll)
+        {
+            return (Position == -1 && diceroll == 6);
+        }
+
+            // /////////////////////////////////////////////////////////////////
+            // Color specific positions ////////////////////////////////////////
+            // /////////////////////////////////////////////////////////////////
+            public int startExit()
         {
             int result;
             switch (Color)
@@ -156,7 +174,7 @@ namespace Ludo
 
         public void DebugPrint()
         {
-            Console.WriteLine($"Piece = {Color}{Number} // Position = {Position}");
+            Debug.WriteLine($"Piece = {Color}{Number} // Position = {Position}");
         }
 
         // Publics //////////////////////////////
