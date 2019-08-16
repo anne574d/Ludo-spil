@@ -39,7 +39,7 @@ namespace Ludo
                 if (sum == 0)
                 {
                     // in goal/home
-                    Console.WriteLine("HOME");
+                    Position = homeLaneEnd();
                     home = true;
                 }
                 else if (sum > 0)
@@ -92,6 +92,7 @@ namespace Ludo
         public bool Overtakes(Piece p, int diceroll)
         {
             // TODO: Find a way that check in the 51->0 border
+            // Map each color's route to its own array for better overtake checking
             bool res;
             if (p == this)
             {
@@ -170,11 +171,6 @@ namespace Ludo
                 default: result = 0; break;
             }
             return result;
-        }
-
-        public void DebugPrint()
-        {
-            Debug.WriteLine($"Piece = {Color}{Number} // Position = {Position}");
         }
 
         // Publics //////////////////////////////

@@ -48,7 +48,11 @@ namespace Ludo
 
             foreach(var p1 in pieces)
             {
-                if (p1.Position == -1)
+                if (p1.IsHome())
+                {
+                    valid = false;
+                }
+                else if (p1.Position == -1)
                 {
                     valid = p1.CanLeaveStart(diceroll);
                 }

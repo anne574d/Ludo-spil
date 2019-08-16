@@ -20,12 +20,15 @@ namespace Ludo
             // piece lands on field with several enemy pieces -> sent to start
             if (Pieces.Count > 1 && currentColor != piece.Color)
             {
+                Debug.WriteLine($"{piece.Color} piece landed on field dominated by {currentColor} and is sent to start");
                 piece.SendToStart();
             }
             // piece lands on field with sinle enemy piece -> sends enemy to start
             else if (Pieces.Count == 1 && currentColor != piece.Color)
             {
+                Debug.WriteLine($"{piece.Color} piece landed on field with one {currentColor} piece which it sends to start");
                 Pieces[0].SendToStart();
+                Pieces.Remove(Pieces[0]);
 
                 currentColor = piece.Color;
                 Pieces.Add(piece);

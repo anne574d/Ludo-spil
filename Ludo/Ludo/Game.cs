@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Ludo
 {
@@ -18,13 +19,10 @@ namespace Ludo
 
         private void setupGame()
         {
-            Console.SetWindowSize(68,32);
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Clear();
-
+            printer = new Printer();
             players = new List<Player>();
             die = new Random();
+            gameover = false;
 
             board = new Field[76];
             for (int i = 0; i < board.Length; ++i)
@@ -66,24 +64,30 @@ namespace Ludo
 
         private void beginGame()
         {
-            while (true)
+            while (!gameover)
             {
                 foreach (var player in players)
                 {
-                    Console.Clear();
+                    printer.DrawBoard(board);
                     playerTurn(player);
+                    if (player.IsDone())
+                    {
+                        printer.PrintEndScreen(player);
+                        gameover = true;
+                        break;
+                    }
                 }
             }
         }
 
         private void playerTurn(Player player)
         {
-            ChangeFontColor(player.Color);
-            Console.Write($"{captitalize(player.Color)}'s turn. Press ENTER to roll die...");
+            Printer.ChangeFontColor(player.Color);
+            Console.Write($"{Captitalize(player.Color)}'s turn. Press ENTER to roll die...");
             Console.ReadLine();
             int roll = rollDie();
 
-            Console.Write($"{captitalize(player.Color)} rolled {roll}. ");
+            Console.Write($"{Captitalize(player.Color)} rolled {roll}. ");
             List<int> validMoves = player.MovablePieces(roll);
 
             if (validMoves.Count == 0)
@@ -101,8 +105,6 @@ namespace Ludo
                     input = Console.ReadLine();
                 } while (!int.TryParse(input, out selectedPiece) || !validMoves.Contains(selectedPiece));
 
-                player.GetPiece(selectedPiece).DebugPrint(); // TODO remove
-
                 if (player.GetPiece(selectedPiece).Position != -1)
                 {
                     // remove piece from old field
@@ -112,12 +114,10 @@ namespace Ludo
                 player.GetPiece(selectedPiece).Move(roll);
                 // update new field
                 board[player.GetPiece(selectedPiece).Position].IncomingPiece(player.GetPiece(selectedPiece));
-                
-                player.GetPiece(selectedPiece).DebugPrint(); // TODO remove
             }
         }
 
-        private string captitalize(string input)
+        static public string Captitalize(string input)
         {
             return input.Substring(0, 1).ToUpper() + input.Substring(1).ToLower();
         }
@@ -127,20 +127,10 @@ namespace Ludo
             return die.Next(1, 7);
         }
 
-        public static void ChangeFontColor(string color)
-        {
-            switch (color)
-            {
-                case "yellow": Console.ForegroundColor = ConsoleColor.DarkYellow; break;
-                case "blue": Console.ForegroundColor = ConsoleColor.Blue; break;
-                case "red": Console.ForegroundColor = ConsoleColor.Red; break;
-                case "green": Console.ForegroundColor = ConsoleColor.DarkGreen; break;
-                default: Console.ForegroundColor = ConsoleColor.Black; break;
-            }
-        }
-
         Field[] board;
         Random die;
         List<Player> players;
+        Printer printer;
+        bool gameover;
     }
 }
