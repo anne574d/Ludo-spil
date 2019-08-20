@@ -14,7 +14,8 @@ namespace Ludo
             Color = playerColor;
             Number = pieceNumber;
             Position = -1;
-            home = false;
+            IsHome = false;
+            createRoute();
         }
 
         // /////////////////////////////////////////////////////////////////
@@ -26,8 +27,8 @@ namespace Ludo
             {
                 // invalid diceroll;
             }
-            // in start
-            else if (Position == -1 && diceroll == 6)
+            // inside start
+            else if (IsAtStart() && diceroll == 6)
             {
                 Position = startExit();
             }
@@ -40,7 +41,7 @@ namespace Ludo
                 {
                     // in goal/home
                     Position = homeLaneEnd();
-                    home = true;
+                    IsHome = true;
                 }
                 else if (sum > 0)
                 {
@@ -50,13 +51,11 @@ namespace Ludo
                 else
                 {
                     // bounce back from home
-                    int newPos = 2 * homeLaneEnd() - (Position + diceroll);
-                    Console.WriteLine($"New position: {newPos}");
                     Position = 2 * homeLaneEnd() - (Position + diceroll);
                 }
             }
             else
-            {
+            {    
                 // in outer ring
                 for (int step = 1; step <= diceroll; ++step)
                 {
@@ -68,6 +67,7 @@ namespace Ludo
                     }
                     else if (Position == homeLaneEntry() + 1)
                     {
+                        // enter homelane
                         Position = homeLaneStart();
                         Move(diceroll - step);
                         break;
@@ -84,30 +84,19 @@ namespace Ludo
         // /////////////////////////////////////////////////////////////////
         // Checking functions //////////////////////////////////////////////
         // /////////////////////////////////////////////////////////////////
-        public bool IsHome()
-        {
-            return home;
-        }
-
         public bool Overtakes(Piece p, int diceroll)
         {
-            // TODO: Find a way that check in the 51->0 border
-            // Map each color's route to its own array for better overtake checking
+            // Determine whether a piece overtakes one of its own
             bool res;
-            if (p == this)
+            if (p == this || p.Position == -1 || p.IsHome )
             {
-                // doesn't overtake itself
-                res = false;
-            }
-            else if (p.Position == -1)
-            {
-                // cannot overtake someone in start
+                // Does not overtake itself, someone inside start or someone who has reached home 
                 res = false;
             }
             else
             {
-                res = (Position < p.Position && Position + diceroll > p.Position);
-                Debug.WriteLine($"{res}: {Color}{Number} as pos {Position} overtakes {p.Color}{p.Number} at pos {p.Position} (roll: {diceroll})");
+                // Compare position on "route", avoids problems at 51->0 and in homelane
+                res = (route.IndexOf(Position) < route.IndexOf(p.Position) && route.IndexOf(Position) + diceroll > route.IndexOf(p.Position));
             }
             return res;
         }
@@ -117,10 +106,50 @@ namespace Ludo
             return (Position == -1 && diceroll == 6);
         }
 
-            // /////////////////////////////////////////////////////////////////
-            // Color specific positions ////////////////////////////////////////
-            // /////////////////////////////////////////////////////////////////
-            public int startExit()
+        public bool IsAtStart()
+        {
+            return (Position == -1);
+        }
+
+        // /////////////////////////////////////////////////////////////////
+        // Color specific positions ////////////////////////////////////////
+        // /////////////////////////////////////////////////////////////////
+
+        private void createRoute()
+        {
+            /* Create route called in constructor.
+               Route is used to ensure a piece cannot 
+               overtake pieces with its own color */
+
+            route = new List<int>();
+
+            int i = startExit();
+            while (i <= homeLaneEnd())
+            {
+                if (i == homeLaneEntry() + 1)
+                {
+                    i = homeLaneStart();
+                    route.Add(i);
+                }
+                else if (i == 51)
+                {
+                    route.Add(i);
+                    i = 0;
+                }
+                else
+                {
+                    route.Add(i);
+                    ++i;
+                }
+            }
+        }
+        /* VOCABULARY:
+           START: Initial position of all pieces (-1). 
+           Piece can exit start if player rolls a 6.
+
+           HOMELANE: Colored lane that leads to home (the goal).
+           Only pieces with matching color can enter homelane */
+        private int startExit()
         {
             int result;
             switch (Color)
@@ -161,6 +190,7 @@ namespace Ludo
         }
         private int homeLaneEnd()
         {
+            // goal/home
             int result;
             switch (Color)
             {
@@ -174,10 +204,11 @@ namespace Ludo
         }
 
         // Publics //////////////////////////////
-        public int Position, Number;
+        public int Position { get; private set; }
+        public int Number { get; private set; }
         public string Color { get; private set; }
-
+        public bool IsHome { get; private set; }
         // Privates /////////////////////////////
-        bool home;
+        private List<int> route;
     }
 }

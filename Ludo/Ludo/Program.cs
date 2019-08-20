@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Ludo
 {
@@ -10,13 +11,10 @@ namespace Ludo
     {
         static void Main(string[] args)
         {
-            Game game = new Game();
-            Console.ReadLine();
+            while (true)
+            {
+                Game game = new Game();
+            }
         }
     }
 }
-
-/* TODO: Better checking of overtake
-         Print piece at start 
-
-*/

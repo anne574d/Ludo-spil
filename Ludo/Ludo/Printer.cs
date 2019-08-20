@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Ludo
 {
@@ -10,29 +11,59 @@ namespace Ludo
     {
         public Printer()
         {
-            Console.SetBufferSize(512, 512);
-            Console.SetWindowSize(80, 52);
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.ForegroundColor = ConsoleColor.Black;
+            Console.SetWindowSize(74, 48);
+            Console.SetBufferSize(74, 148);
+            ChangeFontColor("default");
+            Console.CursorVisible = false;
             Console.Clear();
         }
 
         // ////////////////////////////////////
         // Drawing ////////////////////////////
         // ////////////////////////////////////
-        public void DrawBoard(Field[] board)
+        public void PrintBoard()
         {
             Console.Clear();
+            // draw outer ring
             drawBoxes(false);
+            // draw colored homelanes
+            // (colored lines overwrite black ones)
             drawBoxes(true);
 
-            for (int i = 0; i < board.Length; ++i)
+            // move cursor to write area
+            moveCursorOutsideBoard();
+        }
+
+        public void UpdateBoard(List<Player> players)
+        {
+            // remove all pieces on board
+            for (int i = 0; i < 76; ++i)
             {
                 moveToField(i);
-                placePieces(board[i]);
+                clearField();
             }
 
-            moveCursorOutsideBoard();
+            foreach (var player in players)
+            {
+                // removes piece inside start
+                moveToStart(player.Color);
+                clearField();
+
+                // draw each players pieces at their position
+                foreach (var piece in player.Pieces)
+                {
+                    if (piece.IsAtStart() )
+                    {
+                        moveToStart(player.Color);
+                    }
+                    else
+                    {
+                        moveToField(piece.Position);
+                    }
+                    placePiece(piece);
+                }
+            }
+            clearDialog();
         }
 
         private void drawBoxes(bool colored)
@@ -66,13 +97,13 @@ namespace Ludo
                 res = colored;
             }
             else if ((y == 6 && x > 6 && x < 13) || // blue homelane
-                     (x == 13 && y == 8) )           // blue start
+                     (x == 13 && y == 8) )          // blue start
             {
                 ChangeFontColor("blue");
                 res = colored;
             }
             else if ((x == 7 && y > 6 && y < 13) || // red homelane
-                     (x == 5 && y == 13))            // red start
+                     (x == 5 && y == 13))           // red start
             {
                 ChangeFontColor("red");
                 res = colored;
@@ -88,7 +119,6 @@ namespace Ludo
                 ChangeFontColor("black");
                 res = !colored;
             }
-
             return res;
         }
 
@@ -110,54 +140,148 @@ namespace Ludo
 
         private void drawVoid()
         {
+            // mimics the end position of drawBox() without writing anything
             int x = Console.CursorLeft;
             int y = Console.CursorTop;
-
             Console.SetCursorPosition(x + 5, y);
         }
 
-        private void placePieces(Field field)
+        private void clearField()
         {
             int x = Console.CursorLeft;
             int y = Console.CursorTop;
+            Console.Write("  ");
+            Console.SetCursorPosition(x, y + 1);
+            Console.Write("  ");
+            Console.SetCursorPosition(x, y);
+        }
+        private void clearDialog()
+        {
+            ChangeFontColor("black");
+            moveCursorOutsideBoard();
+            Console.Write("                                                                                                            ");
+            Console.Write("                                                                                                            ");
+            Console.Write("                                                                                                            ");
+            Console.SetCursorPosition(0, 0); // move to top to ensure the entire board is in view
+            moveCursorOutsideBoard();
+        }
+
+        public static void ClearKeyBuffer()
+        {
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(false);
+            }
+        }
+
+        private void placePiecesOnField(Field field)
+        {
             foreach (var piece in field.Pieces)
             {
-                ChangeFontColor(piece.Color);
-                switch(piece.Number)
+                placePiece(piece);
+            }
+        }
+
+        private void placePiecesAtStart(Player player)
+        {
+            moveToStart(player.Color);
+            foreach (var piece in player.Pieces)
+            {
+                if (piece.IsAtStart())
                 {
-                    case 1:
-                        Console.SetCursorPosition(x, y);
-                        Console.Write("1");
-                        break;
-                    case 2:
-                        Console.SetCursorPosition(x + 1, y);
-                        Console.Write("2");
-                        break;
-                    case 3:
-                        Console.SetCursorPosition(x, y + 1);
-                        Console.Write("3");
-                        break;
-                    case 4:
-                        Console.SetCursorPosition(x + 1, y + 1);
-                        Console.Write("4");
-                        break;
+                    placePiece(piece);
                 }
-            }    
+            }
+        }
+        private void placePiece(Piece piece)
+        {
+            int x = Console.CursorLeft;
+            int y = Console.CursorTop;
+
+            ChangeFontColor(piece.Color + "-piece");
+            switch(piece.Number)
+            {
+                case 1:
+                    Console.SetCursorPosition(x, y);
+                    Console.Write("1");
+                    break;
+                case 2:
+                    Console.SetCursorPosition(x + 1, y);
+                    Console.Write("2");
+                    break;
+                case 3:
+                    Console.SetCursorPosition(x, y + 1);
+                    Console.Write("3");
+                    break;
+                case 4:
+                    Console.SetCursorPosition(x + 1, y + 1);
+                    Console.Write("4");
+                    break;
+            }
+            Console.SetCursorPosition(x, y);
+            ChangeFontColor("default");
+        }
+
+        public void PrintStartScreen()
+        {
+            ClearKeyBuffer();
+            Console.Clear();
+            Console.WriteLine(@"
+    Welcome to... 
+     __        __    __  _______    ______  
+    /  |      /  |  /  |/       \  /      \ 
+    $$ |      $$ |  $$ |$$$$$$$  |/$$$$$$  |
+    $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |
+    $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |
+    $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ |
+    $$ |_____ $$ \__$$ |$$ |__$$ |$$ \__$$ |
+    $$       |$$    $$/ $$    $$/ $$    $$/ 
+    $$$$$$$$/  $$$$$$/  $$$$$$$/   $$$$$$/  
+                                        
+    Press ENTER to start game or ESC to quit
+            ");
         }
 
         public void PrintEndScreen(Player winner)
-        { 
-            string msg = ("  " + Game.Captitalize(winner.Color) + " wins!").PadRight(21);
-
+        {
+            ClearKeyBuffer();
             Console.Clear();
             ChangeFontColor(winner.Color);
 
-            Console.WriteLine( "");
-            Console.WriteLine( "  ////////////////////////////");
-            Console.WriteLine( "  ///                      ///");
-            Console.WriteLine($"  /// {msg                }///");
-            Console.WriteLine( "  ///                      ///");
-            Console.WriteLine("  ////////////////////////////");
+            switch (winner.Color)
+            {
+                case "yellow": Console.WriteLine(@"
+   __   __ ___  _     _     ___ __      __ __      __ ___  _  _  ___ 
+   \ \ / /| __|| |   | |   / _ \\ \    / / \ \    / /|_ _|| \| |/ __|
+    \ V / | _| | |__ | |__| (_) |\ \/\/ /   \ \/\/ /  | | | .` |\__ \
+     |_|  |___||____||____|\___/  \_/\_/     \_/\_/  |___||_|\_||___/
+                "); break;
+
+                case "blue": Console.WriteLine(@"
+    ___  _    _   _  ___  __      __ ___  _  _  ___ 
+   | _ )| |  | | | || __| \ \    / /|_ _|| \| |/ __|
+   | _ \| |__| |_| || _|   \ \/\/ /  | | | .` |\__ \
+   |___/|____|\___/ |___|   \_/\_/  |___||_|\_||___/
+                "); break;
+
+                case "red": Console.WriteLine(@"
+    ___  ___  ___   __      __ ___  _  _  ___ 
+   | _ \| __||   \  \ \    / /|_ _|| \| |/ __|
+   |   /| _| | |) |  \ \/\/ /  | | | .` |\__ \
+   |_|_\|___||___/    \_/\_/  |___||_|\_||___/
+                "); break;
+
+                case "green": Console.WriteLine(@"
+     ___  ___  ___  ___  _  _  __      __ ___  _  _  ___ 
+    / __|| _ \| __|| __|| \| | \ \    / /|_ _|| \| |/ __|
+   | (_ ||   /| _| | _| | .` |  \ \/\/ /  | | | .` |\__ \
+    \___||_|_\|___||___||_|\_|   \_/\_/  |___||_|\_||___/
+                "); break;
+                
+                default: break;
+            }
+            Console.WriteLine("   Press ENTER to continue \n\n");
+            Console.ReadLine();
         }
 
 
@@ -174,8 +298,11 @@ namespace Ludo
             Console.SetCursorPosition(0, 45);
         }
 
-        public void moveToField(int field)
+        private void moveToField(int field)
         {
+            // cursor coordinates for all fields
+            // 0 - 51 is outer ring
+            // 52 - 75 is home lanes
             switch (field)
             {
                 default: moveCursorOutsideBoard(); break;
@@ -263,6 +390,20 @@ namespace Ludo
             }
         }
 
+        private void moveToStart(string color)
+        {
+            switch (color)
+            {
+                // "Fields" outside board, right next to startExit(),
+                // to show how many pieces are still inside start. 
+                case "yellow": Console.SetCursorPosition(44, 5); break;
+                case "blue": Console.SetCursorPosition(63, 26); break;
+                case "red": Console.SetCursorPosition(29, 38); break;
+                case "green": Console.SetCursorPosition(9, 17); break;
+            }
+        }
+
+
         // ////////////////////////////////////////
         // Colors /////////////////////////////////
         // ////////////////////////////////////////
@@ -271,13 +412,39 @@ namespace Ludo
         {
             switch (color)
             {
-                case "yellow": Console.ForegroundColor = ConsoleColor.DarkYellow; break;
-                case "blue": Console.ForegroundColor = ConsoleColor.Blue; break;
-                case "red": Console.ForegroundColor = ConsoleColor.Red; break;
-                case "green": Console.ForegroundColor = ConsoleColor.DarkGreen; break;
-                default: Console.ForegroundColor = ConsoleColor.Black; break;
+                case "yellow":
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    break;
+                case "yellow-piece":
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.DarkYellow;
+                    break;
+                case "blue":
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case "blue-piece":
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    break;
+                case "red":
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case "red-piece":
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    break;
+                case "green":
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    break;
+                case "green-piece":
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.White;
+                    break;
             }
         }
-
     }
 }
