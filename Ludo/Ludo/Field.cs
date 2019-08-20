@@ -11,41 +11,47 @@ namespace Ludo
     {
         public Field()
         {
-            Pieces = new List<Piece>();
+            pieces = new List<Piece>();
             currentColor = "";
         }
 
         public void IncomingPiece(Piece piece)
         {
-            // piece lands on field with several enemy pieces -> sent to start
-            if (Pieces.Count > 1 && currentColor != piece.Color)
+            if (enemyDominated(piece.Color))
             {
                 piece.SendToStart();
             }
-            // piece lands on field with sinle enemy piece -> sends enemy to start
-            else if (Pieces.Count == 1 && currentColor != piece.Color)
+            else if (singleEnemy(piece.Color))
             {
-                Pieces[0].SendToStart();
-                Pieces.Remove(Pieces[0]);
+                pieces[0].SendToStart();
+                pieces.Remove(pieces[0]);
 
                 currentColor = piece.Color;
-                Pieces.Add(piece);
+                pieces.Add(piece);
             }
-            // lands on empty field or field with own pieces
             else
             {
+                // lands on empty field or field with own pieces
                 currentColor = piece.Color;
-                Pieces.Add(piece);
+                pieces.Add(piece);
             }
         }
-
         public void OutgoingPiece(Piece piece)
         {
-            Pieces.Remove(piece);
+            pieces.Remove(piece);
         }
 
-        public List<Piece> Pieces;
+        private bool enemyDominated(string incomingColor)
+        {
+            return (pieces.Count > 1 && currentColor != incomingColor);
+        }
 
+        private bool singleEnemy(string incomingColor)
+        {
+            return (pieces.Count == 1 && currentColor != incomingColor);
+        }
+
+        List<Piece> pieces;
         string currentColor;
 
     }

@@ -73,16 +73,9 @@ namespace Ludo
             {
                 for (int x = 0; x < 14; ++x)
                 {
-                    if (boxAtPosition(x, y, colored))
-                    {
-                        drawBox();
-                    }
-                    else
-                    {
-                        drawVoid();
-                    }
+                    drawBox(boxAtPosition(x, y, colored));
                 }
-                newLine();
+                Console.SetCursorPosition(2, Console.CursorTop + 3); // jump to start of new line
             }
         }
 
@@ -122,27 +115,22 @@ namespace Ludo
             return res;
         }
 
-        private void drawBox()
+        private void drawBox(bool notEmpty)
         {
             int x = Console.CursorLeft;
             int y = Console.CursorTop;
 
-            Console.Write("+----+");
-            Console.SetCursorPosition(x, y + 1);
-            Console.Write("|    |");
-            Console.SetCursorPosition(x, y + 2);
-            Console.Write("|    |");
-            Console.SetCursorPosition(x, y + 3);
-            Console.Write("+----+");
-
-            Console.SetCursorPosition(x + 5, y);
-        }
-
-        private void drawVoid()
-        {
-            // mimics the end position of drawBox() without writing anything
-            int x = Console.CursorLeft;
-            int y = Console.CursorTop;
+            if (notEmpty)
+            {
+                Console.Write("+----+");
+                Console.SetCursorPosition(x, y + 1);
+                Console.Write("|    |");
+                Console.SetCursorPosition(x, y + 2);
+                Console.Write("|    |");
+                Console.SetCursorPosition(x, y + 3);
+                Console.Write("+----+");
+            }
+            // if notEmpty == false, cursor is moved to the position of the next potential box
             Console.SetCursorPosition(x + 5, y);
         }
 
@@ -174,25 +162,6 @@ namespace Ludo
             }
         }
 
-        private void placePiecesOnField(Field field)
-        {
-            foreach (var piece in field.Pieces)
-            {
-                placePiece(piece);
-            }
-        }
-
-        private void placePiecesAtStart(Player player)
-        {
-            moveToStart(player.Color);
-            foreach (var piece in player.Pieces)
-            {
-                if (piece.IsAtStart())
-                {
-                    placePiece(piece);
-                }
-            }
-        }
         private void placePiece(Piece piece)
         {
             int x = Console.CursorLeft;
@@ -288,11 +257,6 @@ namespace Ludo
         // //////////////////////////////////////
         // Move cursor //////////////////////////
         // //////////////////////////////////////
-        private void newLine()
-        {
-            Console.SetCursorPosition(2, Console.CursorTop + 3);
-        }
-
         private void moveCursorOutsideBoard()
         {
             Console.SetCursorPosition(0, 45);
