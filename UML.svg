@@ -50,7 +50,7 @@
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="481" y="485.2">+GetPiece(number:int): Piece</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="481" y="501.2">+IsDone(): bool</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="481" y="517.2">+MovablePieces(diceroll:int): List&lt;int&gt;</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="481" y="533.2">+ColorNumber(): int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="481" y="533.2">+SortOrder(): int</text>
   </g>
   <g>
     <rect style="fill: #ffffff" x="65" y="133" width="333.4" height="28"/>
@@ -62,8 +62,8 @@
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="190.2">-printer: Printer</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="206.2">-gameover: bool</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="222.2">-die: Random</text>
-    <rect style="fill: #ffffff" x="65" y="229" width="333.4" height="196"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="65" y="229" width="333.4" height="196"/>
+    <rect style="fill: #ffffff" x="65" y="229" width="333.4" height="180"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="65" y="229" width="333.4" height="180"/>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="242.2">+Game(): Game</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="258.2">+Capitalize(input:string): string</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="274.2">+RollDie(): int</text>
@@ -73,9 +73,8 @@
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="338.2">-startScreen(): void</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="354.2">-selectPlayersMenu(): void</text>
     <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="370.2">-decidePlayOrder(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="386.2">-rotatePlayOrder(k:int): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="402.2">-beginGame(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="418.2">-playerTurn(player:Player,tries:int): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="386.2">-beginGame(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="402.2">-playerTurn(player:Player,tries:int): void</text>
   </g>
   <g>
     <rect style="fill: #ffffff" x="474" y="133" width="341.1" height="28"/>
@@ -123,26 +122,41 @@
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="822.181,442 851.005,442 851.005,398 891,398 "/>
     <polygon style="fill: #000000" points="797.01,442 811.01,437.2 825.01,442 811.01,446.8 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="797.01,442 811.01,437.2 825.01,442 811.01,446.8 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="853.005" y="416"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="829.01" y="438"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="887" y="394"></text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="423.572,399 444.695,399 444.695,442 476.99,442 "/>
-    <polygon style="fill: #000000" points="398.4,399 412.4,394.2 426.4,399 412.4,403.8 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="398.4,399 412.4,394.2 426.4,399 412.4,403.8 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="423.572,383 444.695,383 444.695,442 476.99,442 "/>
+    <polygon style="fill: #000000" points="398.4,383 412.4,378.2 426.4,383 412.4,387.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="398.4,383 412.4,378.2 426.4,383 412.4,387.8 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="446.695" y="408.5"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="430.4" y="379"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="472.99" y="438"></text>
   </g>
   <g>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="423.572,319 442.697,319 442.697,215 472.995,215 "/>
     <polygon style="fill: #000000" points="398.4,319 412.4,314.2 426.4,319 412.4,323.8 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="398.4,319 412.4,314.2 426.4,319 412.4,323.8 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="444.697" y="263"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="430.4" y="315"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="468.995" y="211"></text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="231.7,450.172 231.7,464 246.1,464 246.1,489 "/>
-    <polygon style="fill: #000000" points="231.7,425 236.5,439 231.7,453 226.9,439 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="231.7,425 236.5,439 231.7,453 226.9,439 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="231.7,434.172 231.7,456 246.1,456 246.1,489 "/>
+    <polygon style="fill: #000000" points="231.7,409 236.5,423 231.7,437 226.9,423 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="231.7,409 236.5,423 231.7,437 226.9,423 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="238.9" y="452"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="242.7" y="421"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="250.1" y="485"></text>
   </g>
   <g>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="841.277,215 860.05,215 860.05,278 889.995,278 "/>
     <polygon style="fill: #ffffff" points="816.105,215 830.105,210.2 844.105,215 830.105,219.8 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="816.105,215 830.105,210.2 844.105,215 830.105,219.8 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="862.05" y="242.5"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="848.105" y="211"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="885.995" y="274"></text>
   </g>
   <g>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="446.436,727 1065.4,727 1065.4,424 "/>

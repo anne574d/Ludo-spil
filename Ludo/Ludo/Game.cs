@@ -56,9 +56,8 @@ namespace Ludo
             Console.Write("Select number of players (1-4): ");
             do
             {
-                input = Console.ReadKey().KeyChar.ToString();
+                input = Console.ReadLine();
             } while (!int.TryParse(input, out humanPlayers) || humanPlayers < 1 || humanPlayers > 4);
-            Console.WriteLine("");
 
             // let human players pick their color
             for (int i = 1; i <= humanPlayers; ++i)
@@ -66,7 +65,7 @@ namespace Ludo
                 do
                 {
                     Console.Write($"Player {i}, select your color ({string.Join(", ", availableColors)}): ");
-                    input = Console.ReadLine();
+                    input = Console.ReadLine().Trim().ToLower();
                 } while (!availableColors.Contains(input));
 
                 availableColors.Remove(input);
@@ -88,7 +87,7 @@ namespace Ludo
                 Console.Write($"Select number of computer players ({min}-{max}): ");
                 do
                 {
-                    input = Console.ReadKey().KeyChar.ToString();
+                    input = Console.ReadLine();
                 } while (!int.TryParse(input, out comPlayers) || comPlayers < min || comPlayers > max);
 
                 for (int i = 0; i < comPlayers; ++i)
@@ -106,8 +105,7 @@ namespace Ludo
                more than the others. The winner starts and the 
                play order then goes clockwise around the board. */
 
-            Player winner = new Player();
-
+            string winnerColor = "";
             int highestRoll;
             bool redo = true;
             while (redo)
@@ -119,7 +117,7 @@ namespace Ludo
                     if (player.StartRoll > highestRoll)
                     {
                         highestRoll = player.StartRoll;
-                        winner = player;
+                        winnerColor = player.Color;
                         redo = false;
                     }
                     else if (player.StartRoll == highestRoll)
@@ -135,30 +133,19 @@ namespace Ludo
             {
                 Console.WriteLine($"{Captitalize(player.Color)} rolled {player.StartRoll}. ");
             }
-            Console.WriteLine($"\n{Captitalize(winner.Color)} rolled highest and will start. ");
-            rotatePlayOrder(winner.ColorNumber());
-            Console.ReadKey();
-        }
+            Console.WriteLine($"\n{Captitalize(winnerColor)} rolled highest and will start. ");
 
-        private void rotatePlayOrder(int k)
-        {
             // sort players by yellow -> blue -> red -> green
-            players.Sort((p1, p2) => p1.ColorNumber().CompareTo(p2.ColorNumber()));
+            players.Sort((p1, p2) => p1.SortOrder().CompareTo(p2.SortOrder()));
 
-            // rotate players list until the winner is first 
-            int last = players.Count - 1;
-            for (int i = 0; i < k; ++i)
+            while (players[0].Color != winnerColor)
             {
+                // rotate play order
                 Player temp = players[0];
                 players.RemoveAt(0);
                 players.Add(temp);
             }
-
-            Debug.WriteLine($"Rotated {k} times");
-            foreach (var p in players)
-            {
-                Debug.WriteLine($"{p.Color}");
-            }
+            Console.ReadKey();
         }
 
         private void beginGame()
@@ -171,6 +158,7 @@ namespace Ludo
                     playerTurn(player, 0);
                     if (player.IsDone())
                     {
+                        printer.UpdateBoard(players);
                         printer.PrintEndScreen(player);
                         gameover = true;
                         break;
@@ -181,6 +169,11 @@ namespace Ludo
 
         private void playerTurn(Player player, int tries)
         {
+            if (player.IsDone())
+            {
+                return;
+            }
+
             printer.UpdateBoard(players);
             Printer.ChangeFontColor(player.Color);
 

@@ -78,9 +78,9 @@ namespace Ludo
             return res;
         }
 
-        public int ColorNumber()
+        public int SortOrder()
         {
-            // color order when moving clockwise around board
+            // sort order of colors when moving clockwise around board
             int res = 4;
             switch (Color)
             {

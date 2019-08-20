@@ -36,7 +36,6 @@ namespace Ludo
             else if (Position >= homeLaneStart())
             {
                 int sum = homeLaneEnd() - (Position + diceroll);
-                Console.WriteLine($"sum = {sum}");
                 if (sum == 0)
                 {
                     // in goal/home
