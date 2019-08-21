@@ -110,6 +110,26 @@ namespace Ludo
             return (Position == -1);
         }
 
+        public int LandsOnField(int diceroll)
+        {
+            // predicts where a piece will land given a diceroll
+
+            int home = route.Count - 1;
+            int routeIndex = route.IndexOf(Position) + diceroll;
+
+            if (routeIndex > home)
+            {
+                // bounce back from home
+                routeIndex = (2 * home - routeIndex);
+            }
+            else if (CanLeaveStart(diceroll))
+            {
+                routeIndex = 0;
+            }
+
+            return route[routeIndex];
+        }
+
         // /////////////////////////////////////////////////////////////////
         // Color specific positions ////////////////////////////////////////
         // /////////////////////////////////////////////////////////////////

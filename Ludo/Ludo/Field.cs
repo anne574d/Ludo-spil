@@ -9,22 +9,23 @@ namespace Ludo
 {
     class Field
     {
-        public Field()
+        public Field(int i)
         {
             pieces = new List<Piece>();
             currentColor = "";
+            index = i;
         }
 
         public void IncomingPiece(Piece piece)
         {
-            if (enemyDominated(piece.Color))
+            if (EnemyDominated(piece.Color))
             {
                 piece.SendToStart();
             }
-            else if (singleEnemy(piece.Color))
+            else if (SingleEnemy(piece.Color))
             {
                 pieces[0].SendToStart();
-                pieces.Remove(pieces[0]);
+                pieces.RemoveAt(0);
 
                 currentColor = piece.Color;
                 pieces.Add(piece);
@@ -41,18 +42,33 @@ namespace Ludo
             pieces.Remove(piece);
         }
 
-        private bool enemyDominated(string incomingColor)
+        public bool EnemyDominated(string incomingColor)
         {
             return (pieces.Count > 1 && currentColor != incomingColor);
         }
 
-        private bool singleEnemy(string incomingColor)
+        public bool SingleEnemy(string incomingColor)
         {
             return (pieces.Count == 1 && currentColor != incomingColor);
         }
 
+        public bool IsHomeField()
+        {
+            return (index == 57 || index == 63 || index == 69 || index == 75);
+        }
+
+        public bool IsHomeLane()
+        {
+            return (index > 51);
+        }
+
+        public bool HasFriendlyPiece(string incomingColor)
+        {
+            return (incomingColor == currentColor && pieces.Count > 0);
+        }
+
         List<Piece> pieces;
         string currentColor;
-
+        int index;
     }
 }

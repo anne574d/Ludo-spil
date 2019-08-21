@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows;
 
 namespace Ludo
 {
@@ -27,7 +28,7 @@ namespace Ludo
             board = new Field[76];
             for (int i = 0; i < board.Length; ++i)
             {
-                board[i] = new Field();
+                board[i] = new Field(i);
             }
         }
 
@@ -210,7 +211,8 @@ namespace Ludo
                 }
                 else
                 {
-                    selectedPiece = validMoves[RollDie(validMoves.Count)];
+                    //selectedPiece = validMoves[RollDie(validMoves.Count)];
+                    selectedPiece = aiDecision(player, validMoves, roll);
                     Console.Write($"{Captitalize(player.Color)} moves {selectedPiece}...");
                     Console.ReadKey();
                 }
@@ -231,6 +233,63 @@ namespace Ludo
                     playerTurn(player, 0);
                 }
             }
+        }
+
+        private int aiDecision(Player ai, List<int> validMoves, int diceroll)
+        {
+            Debug.WriteLine($"#### New decision ({ai.Color}) #### ");
+            List<int> movesPoints = new List<int>();
+
+            foreach (var piece in validMoves)
+            {
+                int posStart = ai.GetPiece(piece).Position;
+                int pos = ai.GetPiece(piece).LandsOnField(diceroll);
+
+                if (board[pos].IsHomeField())
+                {
+                    Debug.WriteLine($"Piece {piece} hits home");
+                    movesPoints.Add(10);
+                }
+                else if (board[pos].EnemyDominated(ai.Color))
+                {
+                    Debug.WriteLine($"Piece {piece} will be send home");
+                    movesPoints.Add(0);
+                }
+                else if (board[pos].SingleEnemy(ai.Color))
+                {
+                    Debug.WriteLine($"Piece {piece} sends an enemy home");
+                    movesPoints.Add(9);
+                }
+                else if (ai.GetPiece(piece).CanLeaveStart(diceroll))
+                {
+                    Debug.WriteLine($"Piece {piece} can exit start");
+                    movesPoints.Add(7);
+                }
+                else if (!board[posStart].IsHomeLane() && board[pos].IsHomeLane())
+                {
+                    Debug.WriteLine($"Piece {piece} enters home lane");
+                    movesPoints.Add(8);
+                }
+                else if (board[pos].HasFriendlyPiece(ai.Color))
+                {
+                    Debug.WriteLine($"Piece {piece} can move to a friendly piece");
+                    movesPoints.Add(6);
+                }
+                else if (board[pos].IsHomeLane())
+                {
+                    Debug.WriteLine($"Piece {piece} moves around on home lane");
+                    movesPoints.Add(4);
+                }
+                else // neutral move
+                {
+                    Debug.WriteLine($"Piece {piece} will make a neutral move");
+                    movesPoints.Add(5);
+                }
+            }
+            // returns validMove which corresponds to movePoints' max value. 
+            Debug.WriteLine($" --> Piece {validMoves[movesPoints.IndexOf(movesPoints.Max())]} is the best move\n");
+
+            return validMoves[movesPoints.IndexOf(movesPoints.Max())];
         }
 
         static public string Captitalize(string input)
