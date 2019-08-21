@@ -238,53 +238,56 @@ namespace Ludo
         private int aiDecision(Player ai, List<int> validMoves, int diceroll)
         {
             Debug.WriteLine($"#### New decision ({ai.Color}) #### ");
-            List<int> movesPoints = new List<int>();
+            List<double> movesPoints = new List<double>();
+            double points = 0;
 
             foreach (var piece in validMoves)
             {
                 int posStart = ai.GetPiece(piece).Position;
                 int pos = ai.GetPiece(piece).LandsOnField(diceroll);
+                double howFarAhead = (double)ai.GetPiece(piece).IndexOnRoute(posStart) / 100;
 
                 if (board[pos].IsHomeField())
                 {
-                    Debug.WriteLine($"Piece {piece} hits home");
-                    movesPoints.Add(10);
+                    points = 10.0;
+                    Debug.WriteLine($"Piece {piece} hits home ({points})");
                 }
                 else if (board[pos].EnemyDominated(ai.Color))
                 {
-                    Debug.WriteLine($"Piece {piece} will be send home");
-                    movesPoints.Add(0);
+                    points = 0.0 - howFarAhead;
+                    Debug.WriteLine($"Piece {piece} will be send home ({points})");
                 }
                 else if (board[pos].SingleEnemy(ai.Color))
                 {
-                    Debug.WriteLine($"Piece {piece} sends an enemy home");
-                    movesPoints.Add(9);
+                    points = 9 + howFarAhead;
+                    Debug.WriteLine($"Piece {piece} sends an enemy home ({points})");
                 }
                 else if (ai.GetPiece(piece).CanLeaveStart(diceroll))
                 {
-                    Debug.WriteLine($"Piece {piece} can exit start");
-                    movesPoints.Add(7);
+                    points = 7.0;
+                    Debug.WriteLine($"Piece {piece} can exit start ({points})");
                 }
                 else if (!board[posStart].IsHomeLane() && board[pos].IsHomeLane())
                 {
-                    Debug.WriteLine($"Piece {piece} enters home lane");
-                    movesPoints.Add(8);
-                }
-                else if (board[pos].HasFriendlyPiece(ai.Color))
-                {
-                    Debug.WriteLine($"Piece {piece} can move to a friendly piece");
-                    movesPoints.Add(6);
+                    points = 8 + howFarAhead;
+                    Debug.WriteLine($"Piece {piece} enters home lane ({points})");
                 }
                 else if (board[pos].IsHomeLane())
                 {
-                    Debug.WriteLine($"Piece {piece} moves around on home lane");
-                    movesPoints.Add(4);
+                    points = 4 + howFarAhead;
+                    Debug.WriteLine($"Piece {piece} moves around on home lane ({points})");
+                }
+                else if (board[pos].HasFriendlyPiece(ai.Color))
+                {
+                    points = 6 + howFarAhead;
+                    Debug.WriteLine($"Piece {piece} can move to a friendly piece ({points})");
                 }
                 else // neutral move
                 {
-                    Debug.WriteLine($"Piece {piece} will make a neutral move");
-                    movesPoints.Add(5);
+                    points = 5 + howFarAhead;
+                    Debug.WriteLine($"Piece {piece} will make a neutral move ({points})");
                 }
+                movesPoints.Add(points);
             }
             // returns validMove which corresponds to movePoints' max value. 
             Debug.WriteLine($" --> Piece {validMoves[movesPoints.IndexOf(movesPoints.Max())]} is the best move\n");

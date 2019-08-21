@@ -23,55 +23,10 @@ namespace Ludo
         // /////////////////////////////////////////////////////////////////
         public void Move(int diceroll)
         {
-            if (diceroll <= 0)
+            Position = LandsOnField(diceroll);
+            if (Position == homeLaneEnd())
             {
-                // invalid diceroll;
-            }
-            // inside start
-            else if (IsAtStart() && diceroll == 6)
-            {
-                Position = startExit();
-            }
-            // on home lane
-            else if (Position >= homeLaneStart())
-            {
-                int sum = homeLaneEnd() - (Position + diceroll);
-                if (sum == 0)
-                {
-                    // in goal/home
-                    Position = homeLaneEnd();
-                    IsHome = true;
-                }
-                else if (sum > 0)
-                {
-                    // doesn't reach home
-                    Position += diceroll;
-                }
-                else
-                {
-                    // bounce back from home
-                    Position = 2 * homeLaneEnd() - (Position + diceroll);
-                }
-            }
-            else
-            {    
-                // in outer ring
-                for (int step = 1; step <= diceroll; ++step)
-                {
-                    Position++;
-                    if (Position == 52)
-                    {
-                        // wrap around
-                        Position = 0;
-                    }
-                    else if (Position == homeLaneEntry() + 1)
-                    {
-                        // enter homelane
-                        Position = homeLaneStart();
-                        Move(diceroll - step);
-                        break;
-                    }
-                }
+                IsHome = true;
             }
         }
 
@@ -113,20 +68,18 @@ namespace Ludo
         public int LandsOnField(int diceroll)
         {
             // predicts where a piece will land given a diceroll
-
-            int home = route.Count - 1;
+            int homeIndex = route.Count - 1;
             int routeIndex = route.IndexOf(Position) + diceroll;
 
-            if (routeIndex > home)
+            if (routeIndex >= route.Count)
             {
                 // bounce back from home
-                routeIndex = (2 * home - routeIndex);
+                routeIndex = (2 * homeIndex) - routeIndex;
             }
             else if (CanLeaveStart(diceroll))
             {
                 routeIndex = 0;
             }
-
             return route[routeIndex];
         }
 
@@ -136,7 +89,7 @@ namespace Ludo
 
         private void createRoute()
         {
-            /* Create route called in constructor.
+            /* createRoute() is called in constructor.
                Route is used to ensure a piece cannot 
                overtake pieces with its own color */
 
@@ -149,6 +102,7 @@ namespace Ludo
                 {
                     i = homeLaneStart();
                     route.Add(i);
+                    ++i;
                 }
                 else if (i == 51)
                 {
@@ -162,12 +116,26 @@ namespace Ludo
                 }
             }
         }
+
+        public int IndexOnRoute(int i)
+        {
+            if (i < 0 || i >= route.Count)
+            {
+                return i;
+            }
+            else
+            {
+                return route.IndexOf(i);
+            }
+        }
+
         /* VOCABULARY:
            START: Initial position of all pieces (-1). 
            Piece can exit start if player rolls a 6.
 
            HOMELANE: Colored lane that leads to home (the goal).
            Only pieces with matching color can enter homelane */
+
         private int startExit()
         {
             int result;
