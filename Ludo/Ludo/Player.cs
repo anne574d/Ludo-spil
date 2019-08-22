@@ -14,21 +14,11 @@ namespace Ludo
             Color = color;
             Human = humanPlayer;
 
-            Piece p1 = new Piece(color, 1);
-            Piece p2 = new Piece(color, 2);
-            Piece p3 = new Piece(color, 3);
-            Piece p4 = new Piece(color, 4);
-
             Pieces = new List<Piece>();
-            Pieces.Add(p1);
-            Pieces.Add(p2);
-            Pieces.Add(p3);
-            Pieces.Add(p4);
-        }
-
-        public Player()
-        {
-            // empty player object;
+            for (int i = 1; i <= 4; ++i)
+            {
+                Pieces.Add(new Piece(color, i));
+            }
         }
 
         public Piece GetPiece(int number)
