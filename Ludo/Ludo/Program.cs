@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Ludo
 {
@@ -11,10 +12,10 @@ namespace Ludo
     {
         static void Main(string[] args)
         {
-            while (true)
-            {
-                Game game = new Game();
-            }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new GUI());
+
         }
     }
 }

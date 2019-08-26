@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace Ludo
 {
@@ -18,6 +20,14 @@ namespace Ludo
             for (int i = 1; i <= 4; ++i)
             {
                 Pieces.Add(new Piece(color, i));
+            }
+        }
+
+        public void LinkToParent(Form parent)
+        {
+            foreach (var p in Pieces)
+            {
+                p.SetParent(parent);
             }
         }
 

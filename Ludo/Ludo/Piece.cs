@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace Ludo
 {
-    class Piece
+    class Piece : Label
     {
         public Piece(string playerColor, int pieceNumber)
         {
@@ -16,6 +18,11 @@ namespace Ludo
             Position = -1;
             IsHome = false;
             createRoute();
+        }
+
+        public void SetParent(Form parent)
+        {
+            Parent = parent;
         }
 
         // /////////////////////////////////////////////////////////////////

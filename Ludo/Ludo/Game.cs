@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Ludo
 {
@@ -11,23 +13,28 @@ namespace Ludo
     {
         public Game()
         {
+            Players = new List<Player>();
+            GameOver = false;
+
+            Players.Add(new Player("red", true));
+            Players.Add(new Player("blue", true));
+
+            
+
+            /*
             setupGame();
             startScreen();
             selectPlayersMenu();
             decidePlayOrder();
-            beginGame();
+            beginGame(); */
         }
 
-        private void setupGame()
+        public void SetupBoard(Form parent)
         {
-            printer = new Printer();
-            players = new List<Player>();
-            gameover = false;
-
-            board = new Field[76];
-            for (int i = 0; i < board.Length; ++i)
+            Board = new Field[76];
+            for (int i = 0; i < Board.Length; ++i)
             {
-                board[i] = new Field(i);
+                Board[i] = new Field(i, parent);
             }
         }
 
@@ -70,7 +77,7 @@ namespace Ludo
 
                 availableColors.Remove(input);
                 Player player = new Player(input, true);
-                players.Add(player);
+                Players.Add(player);
             }
 
             // add com players, whose color is one of the colors that's leftover
@@ -93,7 +100,7 @@ namespace Ludo
                 for (int i = 0; i < comPlayers; ++i)
                 {
                     Player comPlayer = new Player(availableColors[0], false);
-                    players.Add(comPlayer);
+                    Players.Add(comPlayer);
                     availableColors.Remove(availableColors[0]);
                 }
             }
@@ -111,7 +118,7 @@ namespace Ludo
             while (redo)
             {
                 highestRoll = 0;
-                foreach (var player in players)
+                foreach (var player in Players)
                 {
                     player.StartRoll = RollDie();
                     if (player.StartRoll > highestRoll)
@@ -129,21 +136,21 @@ namespace Ludo
 
             // print result to users
             Console.WriteLine("\n\nEach player rolls a die to decide the play order: \n");
-            foreach (var player in players)
+            foreach (var player in Players)
             {
                 Console.WriteLine($"{Captitalize(player.Color)} rolled {player.StartRoll}. ");
             }
             Console.WriteLine($"\n{Captitalize(winnerColor)} rolled highest and will start. ");
 
             // sort players by yellow -> blue -> red -> green
-            players.Sort((p1, p2) => p1.SortOrder().CompareTo(p2.SortOrder()));
+            Players.Sort((p1, p2) => p1.SortOrder().CompareTo(p2.SortOrder()));
 
-            while (players[0].Color != winnerColor)
+            while (Players[0].Color != winnerColor)
             {
                 // rotate play order
-                Player temp = players[0];
-                players.RemoveAt(0);
-                players.Add(temp);
+                Player temp = Players[0];
+                Players.RemoveAt(0);
+                Players.Add(temp);
             }
             Console.ReadKey();
         }
@@ -151,16 +158,16 @@ namespace Ludo
         private void beginGame()
         {
             printer.PrintBoard();
-            while (!gameover)
+            while (!GameOver)
             {
-                foreach (var player in players)
+                foreach (var player in Players)
                 {
                     playerTurn(player, 0);
                     if (player.IsDone())
                     {
-                        printer.UpdateBoard(players);
+                        printer.UpdateBoard(Players);
                         printer.PrintEndScreen(player);
-                        gameover = true;
+                        GameOver = true;
                         break;
                     }
                 }
@@ -174,7 +181,7 @@ namespace Ludo
                 return;
             }
 
-            printer.UpdateBoard(players);
+            printer.UpdateBoard(Players);
             Printer.ChangeFontColor(player.Color);
 
             int roll = RollDie();
@@ -219,12 +226,12 @@ namespace Ludo
                 if (player.GetPiece(selectedPiece).Position != -1)
                 {
                     // remove piece from old field
-                    board[player.GetPiece(selectedPiece).Position].OutgoingPiece(player.GetPiece(selectedPiece));
+                    Board[player.GetPiece(selectedPiece).Position].OutgoingPiece(player.GetPiece(selectedPiece));
                 }
                 // move piece
                 player.GetPiece(selectedPiece).Move(roll);
                 // update new field
-                board[player.GetPiece(selectedPiece).Position].IncomingPiece(player.GetPiece(selectedPiece));
+                Board[player.GetPiece(selectedPiece).Position].IncomingPiece(player.GetPiece(selectedPiece));
 
                 if (roll == 6)
                 {
@@ -246,17 +253,17 @@ namespace Ludo
                 int pos = ai.GetPiece(piece).LandsOnField(diceroll);
                 double howFarAhead = (double)ai.GetPiece(piece).IndexOnRoute(posStart) / 100;
 
-                if (board[pos].IsHomeField())
+                if (Board[pos].IsHomeField())
                 {
                     points = 10.0;
                     Debug.WriteLine($"Piece {piece} hits home ({points})");
                 }
-                else if (board[pos].EnemyDominated(ai.Color))
+                else if (Board[pos].EnemyDominated(ai.Color))
                 {
                     points = 0.0 - howFarAhead;
                     Debug.WriteLine($"Piece {piece} will be send home ({points})");
                 }
-                else if (board[pos].SingleEnemy(ai.Color))
+                else if (Board[pos].SingleEnemy(ai.Color))
                 {
                     points = 9 + howFarAhead;
                     Debug.WriteLine($"Piece {piece} sends an enemy home ({points})");
@@ -266,17 +273,17 @@ namespace Ludo
                     points = 7.0;
                     Debug.WriteLine($"Piece {piece} can exit start ({points})");
                 }
-                else if (!board[posStart].IsHomeLane() && board[pos].IsHomeLane())
+                else if (!Board[posStart].IsHomeLane() && Board[pos].IsHomeLane())
                 {
                     points = 8 + howFarAhead;
                     Debug.WriteLine($"Piece {piece} enters home lane ({points})");
                 }
-                else if (board[pos].IsHomeLane())
+                else if (Board[pos].IsHomeLane())
                 {
                     points = 4 + howFarAhead;
                     Debug.WriteLine($"Piece {piece} moves around on home lane ({points})");
                 }
-                else if (board[pos].HasFriendlyPiece(ai.Color))
+                else if (Board[pos].HasFriendlyPiece(ai.Color))
                 {
                     points = 6 + howFarAhead;
                     Debug.WriteLine($"Piece {piece} can move to a friendly piece ({points})");
@@ -309,11 +316,25 @@ namespace Ludo
             // roll n-sided die, returns 0 to (n-1)
             return die.Next(n);
         }
+        public static Color GetColor(string color)
+        {
+            switch (color)
+            {
+                case "red": return Color.Red;
+                case "blue": return Color.DeepSkyBlue;
+                case "yellow": return Color.Gold;
+                case "green": return Color.Green;
 
-        Field[] board;
-        List<Player> players;
+                default: return Color.Black;
+            }
+        }
+
+
+        public Field[] Board;
+        public List<Player> Players;
+        public bool GameOver;
+
         Printer printer;
-        bool gameover;
 
         static Random die = new Random();
     }
