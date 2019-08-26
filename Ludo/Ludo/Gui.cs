@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Ludo
 {
@@ -29,11 +30,17 @@ namespace Ludo
             StartPosition = FormStartPosition.CenterScreen;
 
             PlayerSelectionMenu playerMenu = new PlayerSelectionMenu(this);
+            playerMenu.Show();
 
             // Game settings
             game = new Game();
             game.SetupBoard(this);
+
+            Debug.WriteLine("Got here (after SetupBoard(...))");
+
+
         }
+
         private void updateBoard()
         {
             foreach (var player in game.Players)
@@ -46,7 +53,6 @@ namespace Ludo
         }
 
         Game game;
-        GroupBox playerSelectMenu;
 
     }
 }

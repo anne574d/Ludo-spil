@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Ludo
 {
@@ -16,9 +17,40 @@ namespace Ludo
             Size = new Size(820, 820);
             Location = new Point(0, 0);
 
+            addTitle();
+            addStart();
             addColors();
 
-            //Hide();
+            Hide();
+        }
+
+        private void addTitle()
+        {
+            Label title = new Label();
+            Controls.Add(title);
+            title.Size = new Size(820, 200);
+            title.Location = new Point(0, 0);
+            title.Text = "L U D O";
+            title.TextAlign = ContentAlignment.MiddleCenter;
+            title.Font = new Font("Arial", 100, FontStyle.Bold);
+            title.BackColor = Color.Black;
+            title.ForeColor = Color.White;
+
+        }
+
+        private void addStart()
+        {
+            Label start = new Label();
+            Controls.Add(start);
+            start.Size = new Size(820, 200);
+            start.Location = new Point(0, 585);
+            start.Text = "S T A R T";
+            start.TextAlign = ContentAlignment.MiddleCenter;
+            start.Font = new Font("Arial", 100, FontStyle.Bold);
+            start.BackColor = Color.Black;
+            start.ForeColor = Color.White;
+
+            start.Click += startClicked;
         }
 
         private void addColors()
@@ -28,40 +60,72 @@ namespace Ludo
 
             foreach (var col in colors)
             {
-                Label lbl = new Label();
+                PlayerSelect lbl = new PlayerSelect(col);
                 Controls.Add(lbl);
-
-                lbl.BackColor = Game.GetColor(col);
-                lbl.Size = new Size(205, 820);
-                lbl.Location = new Point(xPos, 0);
-                lbl.Text = "";
-
-                lbl.Click += (sender, EventArgs) => { colorClicked(sender, EventArgs, lbl); };
+                lbl.MoveHorizontally(xPos);
 
                 xPos += 205;
             }
         }
 
-        private void colorClicked(object sender, EventArgs e, Label lbl)
+        private void startClicked(object sender, EventArgs e)
         {
-            switch (lbl.Text)
+            foreach (PlayerSelect ps in Controls.OfType<PlayerSelect>())
             {
-                case "": lbl.Text = "PLAYER"; break;
-                case "PLAYER": lbl.Text = "COM"; break;
-                case "COM": lbl.Text = ""; break;
+                if (ps.IsActive())
+                {
+                    Debug.WriteLine($"{ps.GetColor()} player is human: {ps.IsHuman()}");
+                }
+            }
+            Debug.WriteLine("Start!");
+            Hide();
+        }
+    }
 
-                default: lbl.Text = ""; break;
+    public class PlayerSelect : Label
+    {
+        public PlayerSelect(string color)
+        {
+            playerColor = color;
+
+            BackColor = Game.GetColor(color);
+            Size = new Size(205, 820);
+            Text = "";
+            TextAlign = ContentAlignment.MiddleCenter;
+            Font = new Font("Arial", 24, FontStyle.Bold);
+
+            Click += clickEvent;
+        }
+
+        public void MoveHorizontally(int x)
+        {
+            Location = new Point(x,0);
+        }
+        private void clickEvent(object sender, EventArgs e)
+        {
+            switch (Text)
+            {
+                case "": Text = "PLAYER"; break;
+                case "PLAYER": Text = "COM"; break;
+                case "COM": Text = ""; break;
+
+                default: Text = ""; break;
             }
         }
 
-        public void Show()
+        public string GetColor()
         {
-            Visible = true;
+            return playerColor;
+        }
+        public bool IsHuman()
+        {
+            return (Text == "PLAYER");
+        }
+        public bool IsActive()
+        {
+            return (Text != "");
         }
 
-        public void Hide()
-        {
-            Visible = false;
-        }
+        string playerColor;
     }
 }
