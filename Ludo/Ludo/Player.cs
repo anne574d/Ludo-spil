@@ -9,9 +9,9 @@ using System.Drawing;
 
 namespace Ludo
 {
-    class Player
+    public class Player
     {
-        public Player(string color, bool humanPlayer)
+        public Player(string color, bool humanPlayer, GUI gui)
         {
             Color = color;
             Human = humanPlayer;
@@ -19,15 +19,7 @@ namespace Ludo
             Pieces = new List<Piece>();
             for (int i = 1; i <= 4; ++i)
             {
-                Pieces.Add(new Piece(color, i));
-            }
-        }
-
-        public void LinkToParent(Form parent)
-        {
-            foreach (var p in Pieces)
-            {
-                p.SetParent(parent);
+                Pieces.Add(new Piece(color, i, gui));
             }
         }
 
@@ -35,6 +27,18 @@ namespace Ludo
         {
             // on board the pieces range 1-4, but has indexes 0-3
             return Pieces[number - 1];
+        }
+
+        public Piece GetPieceAtStart()
+        {
+            foreach (var p in Pieces)
+            {
+                if (p.IsAtStart())
+                {
+                    return p;
+                }
+            }
+            throw new Exception("No piece at start");
         }
 
         public bool IsDone()
@@ -47,7 +51,17 @@ namespace Ludo
             return res;
         }
 
-        public List<int> MovablePieces(int diceroll)
+        public List<int> ValidMoves(int diceroll)
+        {
+            List<int> result = new List<int>();
+            foreach (var piece in moveablePieces(diceroll))
+            {
+                result.Add(GetPiece(piece).Position);
+            }
+            return result;
+        }
+
+        private List<int> moveablePieces(int diceroll)
         {
             List<int> res = new List<int>();
             bool valid;

@@ -9,10 +9,14 @@ using System.Drawing;
 
 namespace Ludo
 {
-    class Piece : Label
+    public class Piece : PictureBox
     {
-        public Piece(string playerColor, int pieceNumber)
+        public Piece(string playerColor, int pieceNumber, GUI gui)
         {
+            gui.Controls.Add(this);
+            Size = new Size(20, 20);
+            BackColor = GUI.GetColor(playerColor);
+
             Color = playerColor;
             Number = pieceNumber;
             Position = -1;
@@ -20,31 +24,23 @@ namespace Ludo
             createRoute();
         }
 
-        public void SetParent(Form parent)
-        {
-            Parent = parent;
-        }
-
-        // /////////////////////////////////////////////////////////////////
         // Movement functions //////////////////////////////////////////////
-        // /////////////////////////////////////////////////////////////////
-        public void Move(int diceroll)
+        public void MovePiece(int diceroll)
         {
             Position = LandsOnField(diceroll);
+            moveGraphic();
+
             if (Position == homeLaneEnd())
             {
                 IsHome = true;
             }
         }
-
         public void SendToStart()
         {
             Position = -1;
         }
 
-        // /////////////////////////////////////////////////////////////////
         // Checking functions //////////////////////////////////////////////
-        // /////////////////////////////////////////////////////////////////
         public bool Overtakes(Piece p, int diceroll)
         {
             // Determine whether a piece overtakes one of its own
@@ -66,12 +62,10 @@ namespace Ludo
         {
             return (Position == -1 && diceroll == 6);
         }
-
         public bool IsAtStart()
         {
             return (Position == -1);
         }
-
         public int LandsOnField(int diceroll)
         {
             // predicts where a piece will land given a diceroll
@@ -90,10 +84,41 @@ namespace Ludo
             return route[routeIndex];
         }
 
-        // /////////////////////////////////////////////////////////////////
+        // Graphics ////////////////////////////////////////
+        private void moveGraphic()
+        {
+            Point newLocation = new Point();
+            if (!IsAtStart())
+            {
+                newLocation = GUI.FieldLocation(Position);
+                switch (Number)
+                {
+                    case 1:
+                        newLocation.X += 3;
+                        newLocation.Y += 3;
+                        break;
+                    case 2:
+                        newLocation.X += 27;
+                        newLocation.Y += 3;
+                        break;
+                    case 3:
+                        newLocation.X += 3;
+                        newLocation.Y += 27;
+                        break;
+                    case 4:
+                        newLocation.X += 27;
+                        newLocation.Y += 27;
+                        break;
+                }
+            }
+            else
+            {
+                //
+            }
+            Location = newLocation;
+        }
+            
         // Color specific positions ////////////////////////////////////////
-        // /////////////////////////////////////////////////////////////////
-
         private void createRoute()
         {
             /* createRoute() is called in constructor.

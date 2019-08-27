@@ -9,32 +9,18 @@ using System.Drawing;
 
 namespace Ludo
 {
-    class Field : Label
+    public class Field : Label
     {
-        public Field(int i, Form parent)
+        public Field(int i, GUI parent)
         {
+            this.parent = parent;
             pieces = new List<Piece>();
             currentColor = "";
             index = i;
 
-            setupLabel(parent);
+            setupLabel();
         }
-
-        private void setupLabel(Form parent)
-        {
-            Parent = parent;
-            Width = 50;
-            Height = 50;
-            BorderStyle = BorderStyle.Fixed3D;
-
-            Text = index.ToString(); // todo remove
-
-            positionLabel();
-            colorLabel();
-        }
-
-
-
+        // Incoming / outgoing ///////////////////////////////////////////
         public void IncomingPiece(Piece piece)
         {
             if (EnemyDominated(piece.Color))
@@ -56,57 +42,87 @@ namespace Ludo
                 pieces.Add(piece);
             }
         }
-        public void OutgoingPiece(Piece piece)
+        public Piece OutgoingPiece()
         {
-            pieces.Remove(piece);
+            Piece p = pieces[0];
+            pieces.RemoveAt(0);
+            return p;
         }
 
+        // Checking functions ///////////////////////////////////////////
         public bool EnemyDominated(string incomingColor)
         {
             return (pieces.Count > 1 && currentColor != incomingColor);
         }
-
         public bool SingleEnemy(string incomingColor)
         {
             return (pieces.Count == 1 && currentColor != incomingColor);
         }
-
         public bool IsHomeField()
         {
             return (index == 57 || index == 63 || index == 69 || index == 75);
         }
-
         public bool IsHomeLane()
         {
             return (index > 51);
         }
-
         public bool HasFriendlyPiece(string incomingColor)
         {
             return (incomingColor == currentColor && pieces.Count > 0);
         }
 
+        // Graphic functions ///////////////////////////////////////////
+        private void onClick(object sender, EventArgs e)
+        {
+            parent.FieldClicked(index);
+        }
+        private void setupLabel()
+        {
+            Parent = parent;
+            Width = 50;
+            Height = 50;
+            BorderStyle = BorderStyle.Fixed3D;
+            Click += onClick;
+
+            Text = index.ToString(); // todo remove
+
+            Location = GUI.FieldLocation(index);
+            colorLabel();
+        }
         private void colorLabel()
         {
             if ((index >= 52 && index <= 57) || index == 0)
             {
-                BackColor = Game.GetColor("yellow");
+                BackColor = GUI.GetColor("yellow");
             }
             else if ((index >= 58 && index <= 63) || index == 13)
             {
-                BackColor = Game.GetColor("blue");
+                BackColor = GUI.GetColor("blue");
             }
             else if ((index >= 64 && index <= 69) || index == 26)
             {
-                BackColor = Game.GetColor("red");
+                BackColor = GUI.GetColor("red");
             }
             else if ((index >= 70 && index <= 75) || index == 39)
             {
-                BackColor = Game.GetColor("green");
+                BackColor = GUI.GetColor("green");
             }
-
         }
 
+        public void Highlight(bool on)
+        {
+            if (on)
+            {
+                BorderStyle = BorderStyle.FixedSingle;
+            }
+            else
+            {
+                BorderStyle = BorderStyle.Fixed3D;
+            }
+        }
+
+
+        /*
         private void positionLabel()
         {
             switch (index)
@@ -192,10 +208,11 @@ namespace Ludo
                 case 74: Location = new Point(300, 400); break;
                 case 75: Location = new Point(350, 400); break;
             }
-        }
+        }*/
 
         List<Piece> pieces;
         string currentColor;
         int index;
+        GUI parent;
     }
 }

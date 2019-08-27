@@ -9,19 +9,17 @@ using System.Diagnostics;
 
 namespace Ludo
 {
-    class PlayerSelectionMenu : GroupBox
+    public class PlayerSelectionMenu : GroupBox
     {
-        public PlayerSelectionMenu(Form parent)
+        public PlayerSelectionMenu(GUI parent)
         {
-            Parent = parent;
+            this.parent = parent;
             Size = new Size(820, 820);
             Location = new Point(0, 0);
 
             addTitle();
             addStart();
             addColors();
-
-            Hide();
         }
 
         private void addTitle()
@@ -35,7 +33,6 @@ namespace Ludo
             title.Font = new Font("Arial", 100, FontStyle.Bold);
             title.BackColor = Color.Black;
             title.ForeColor = Color.White;
-
         }
 
         private void addStart()
@@ -68,18 +65,43 @@ namespace Ludo
             }
         }
 
-        private void startClicked(object sender, EventArgs e)
+        private int activePlayers()
         {
+            int count = 0;
             foreach (PlayerSelect ps in Controls.OfType<PlayerSelect>())
             {
                 if (ps.IsActive())
                 {
-                    Debug.WriteLine($"{ps.GetColor()} player is human: {ps.IsHuman()}");
+                    ++count;
                 }
             }
-            Debug.WriteLine("Start!");
-            Hide();
+            return count;
         }
+
+        private void startClicked(object sender, EventArgs e)
+        {
+            if (activePlayers() >= 2)
+            {
+                Hide();
+                parent.ExitPlayerSelectionMenu();
+            }
+        }
+
+        public List<PlayerSelect> GetPlayers()
+        {
+            List<PlayerSelect> result = new List<PlayerSelect>();
+            foreach (PlayerSelect player in Controls.OfType<PlayerSelect>())
+            {
+                if (player.IsActive())
+                {
+                    result.Add(player);
+                }
+            }
+            return result;
+        }
+
+        // Fields
+        GUI parent;
     }
 
     public class PlayerSelect : Label
@@ -126,6 +148,7 @@ namespace Ludo
             return (Text != "");
         }
 
+        // Fields
         string playerColor;
     }
 }

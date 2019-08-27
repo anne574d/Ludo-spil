@@ -21,3 +21,4 @@ P:\H1\3_ClientSideProgramming\ObjektOrienteretProgrammering\Ludo\Ludo\obj\Debug\
 P:\H1\3_ClientSideProgramming\ObjektOrienteretProgrammering\Ludo\Ludo\obj\Debug\Ludo.exe
 P:\H1\3_ClientSideProgramming\ObjektOrienteretProgrammering\Ludo\Ludo\obj\Debug\Ludo.pdb
 P:\H1\3_ClientSideProgramming\ObjektOrienteretProgrammering\Ludo\Ludo\obj\Debug\Ludo.GUI.resources
+P:\H1\3_ClientSideProgramming\ObjektOrienteretProgrammering\Ludo\Ludo\obj\Debug\Ludo.Properties.Resources.resources
