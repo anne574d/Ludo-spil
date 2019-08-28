@@ -14,6 +14,7 @@ namespace Ludo
         public PlayerSelectionMenu(GUI parent)
         {
             this.parent = parent;
+            parent.Controls.Add(this);
             Size = new Size(820, 820);
             Location = new Point(0, 0);
 
@@ -110,20 +111,20 @@ namespace Ludo
         {
             playerColor = color;
 
-            BackColor = Game.GetColor(color);
+            BackColor = GUI.GetColor(color);
             Size = new Size(205, 820);
             Text = "";
             TextAlign = ContentAlignment.MiddleCenter;
             Font = new Font("Arial", 24, FontStyle.Bold);
 
-            Click += clickEvent;
+            Click += onClick;
         }
 
         public void MoveHorizontally(int x)
         {
-            Location = new Point(x,0);
+            Location = new Point(x, 0);
         }
-        private void clickEvent(object sender, EventArgs e)
+        private void onClick(object sender, EventArgs e)
         {
             switch (Text)
             {
@@ -131,10 +132,9 @@ namespace Ludo
                 case "PLAYER": Text = "COM"; break;
                 case "COM": Text = ""; break;
 
-                default: Text = ""; break;
+                default: throw new Exception($"Unknown player state in player selection menu: \"{Text}\"");
             }
         }
-
         public string GetColor()
         {
             return playerColor;

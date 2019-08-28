@@ -13,15 +13,21 @@ namespace Ludo
     {
         public Piece(string playerColor, int pieceNumber, GUI gui)
         {
-            gui.Controls.Add(this);
-            Size = new Size(20, 20);
-            BackColor = GUI.GetColor(playerColor);
-
+            // piece fields
             Color = playerColor;
             Number = pieceNumber;
             Position = -1;
             IsHome = false;
             createRoute();
+
+            // picturebox fields
+            gui.Controls.Add(this);
+            Size = new Size(20, 20);
+            BackColor = GUI.GetColor(playerColor); // todo replace with Image
+            BorderStyle = BorderStyle.FixedSingle; // todo remove 
+            //Image = (Image)Properties.Resources.ResourceManager.GetObject(playerColor + "piece");
+            //Click += (object sender, EventArgs e) => { gui.ClickEvent(sender, e)}; // click through-able
+            moveGraphic();
         }
 
         // Movement functions //////////////////////////////////////////////
@@ -38,6 +44,7 @@ namespace Ludo
         public void SendToStart()
         {
             Position = -1;
+            moveGraphic();
         }
 
         // Checking functions //////////////////////////////////////////////
@@ -88,32 +95,27 @@ namespace Ludo
         private void moveGraphic()
         {
             Point newLocation = new Point();
-            if (!IsAtStart())
+            if (IsAtStart())
             {
-                newLocation = GUI.FieldLocation(Position);
+                newLocation = GUI.StartLocation(Color);
                 switch (Number)
                 {
-                    case 1:
-                        newLocation.X += 3;
-                        newLocation.Y += 3;
-                        break;
-                    case 2:
-                        newLocation.X += 27;
-                        newLocation.Y += 3;
-                        break;
-                    case 3:
-                        newLocation.X += 3;
-                        newLocation.Y += 27;
-                        break;
-                    case 4:
-                        newLocation.X += 27;
-                        newLocation.Y += 27;
-                        break;
+                    case 1: newLocation.Offset(65, 28); break;
+                    case 2: newLocation.Offset(28, 65); break;
+                    case 3: newLocation.Offset(102, 65); break;
+                    case 4: newLocation.Offset(65, 102); break;
                 }
             }
             else
             {
-                //
+                newLocation = GUI.FieldLocation(Position);
+                switch (Number)
+                {
+                    case 1: newLocation.Offset(3, 3); break;
+                    case 2: newLocation.Offset(27, 3); break;
+                    case 3: newLocation.Offset(3, 27); break;
+                    case 4: newLocation.Offset(27, 27); break;
+                }
             }
             Location = newLocation;
         }

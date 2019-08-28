@@ -18,10 +18,12 @@ namespace Ludo
             this.parent = parent;
 
             InitializeComponent();
-            setup();
+            setupWindow();
+            setupElements();
+            setupBorder();
         }
 
-        private void setup()
+        private void setupWindow()
         {
             // Window settings
             Width = 820;
@@ -29,21 +31,57 @@ namespace Ludo
             MaximizeBox = false;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             StartPosition = FormStartPosition.CenterScreen;
+        }
 
+        private void setupElements()
+        {
             // Open start screen / player select menu
             playerMenu = new PlayerSelectionMenu(this);
-            Controls.Add(playerMenu);
-            playerMenu.Show();
 
             // load in die
             GameDie = new Die(this);
-            
-            // load in dialog
-            Dialog = new DialogBox(this);
 
-            Dialog.Print("Black hello");
-            Dialog.ChangeColor("blue");
-            Dialog.Print("Blue hello");
+            // load in dialog box
+            Dialog = new DialogBox(this);
+        }
+
+        private void setupBorder()
+        {
+            // create colored border
+            int thickness = 20;
+            border = new List<Label>();
+
+            Label borderUpper = new Label();
+            borderUpper.Location = new Point(0, 0);
+            borderUpper.Size = new Size(820, thickness);
+            border.Add(borderUpper);
+            Controls.Add(borderUpper);
+
+            Label borderLower = new Label();
+            borderLower.Location = new Point(0, 781-thickness);
+            borderLower.Size = new Size(820, thickness);
+            border.Add(borderLower);
+            Controls.Add(borderLower);
+
+            Label borderLeft = new Label();
+            borderLeft.Location = new Point(0, 0);
+            borderLeft.Size = new Size(thickness, 820);
+            border.Add(borderLeft);
+            Controls.Add(borderLeft);
+
+            Label borderRight = new Label();
+            borderRight.Location = new Point(805-thickness, 0);
+            borderRight.Size = new Size(thickness, 820);
+            border.Add(borderRight);
+            Controls.Add(borderRight);
+        }
+
+        public void ChangeBorderColor(string color)
+        {
+            foreach (var side in border)
+            {
+                side.BackColor = GUI.GetColor(color);
+            }
         }
 
         public void ExitPlayerSelectionMenu()
@@ -57,7 +95,7 @@ namespace Ludo
 
         public void DieRolled()
         {
-            parent.NextTurn();
+            parent.DieRolled();
         }
 
         public void FieldClicked(int index)
@@ -65,21 +103,27 @@ namespace Ludo
             parent.MovePiece(index);
         }
 
-        public void UpdateBoard(Field[] board)
-        {
-            for (int i = 0; i < board.Length; ++i)
-            {
-                board[i].Highlight(false); // remove previous turns highlight
-            }
-            // todo draw pieces at start
-        }
-
         public void ShowEndScreen(Player winner)
         {
             Debug.Write($"{winner.Color} WINS!");
         }
 
+        public void DrawStartZone(string color)
+        {
+            PictureBox startZone = new PictureBox();
+            Controls.Add(startZone);
 
+            startZone.Size = new Size(150, 150);
+            startZone.Location = StartLocation(color);
+            startZone.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            startZone.Image = (Image)Properties.Resources.ResourceManager.GetObject("start"+Game.Captitalize(color));
+            //startZone.BackColor = GetColor(color); // remove when pictures added
+
+            startZone.Click += (object sender, EventArgs e) => { parent.StartClicked(color); };
+        }
+
+        // static methods ////////////////////////////////////////////
         public static Color GetColor(string color)
         {
             switch (color)
@@ -97,7 +141,12 @@ namespace Ludo
         {
             switch (color)
             {
-                case "yellow":  return
+                case "yellow":  return new Point(500, 100);
+                case "blue": return new Point(550, 500);
+                case "red": return new Point(150, 550);
+                case "green": return new Point(100, 150);
+
+                default: throw new Exception("Invalid input color");
             }
         }
         public static Point FieldLocation(int i)
@@ -185,11 +234,12 @@ namespace Ludo
                 case 74: return new Point(300, 400);
                 case 75: return new Point(350, 400);
 
-                default: return new Point(0, 0);
+                default: throw new Exception("Invalid field index");
             }
         }
 
 
+        List<Label> border;
         Game parent;
         PlayerSelectionMenu playerMenu;
         public Die GameDie;

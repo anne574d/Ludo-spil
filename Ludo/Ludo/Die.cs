@@ -16,11 +16,15 @@ namespace Ludo
             this.parent = parent;
             parent.Controls.Add(this);
 
+            // picturebox fields
             Size = new Size(75, 75);
             SizeMode = PictureBoxSizeMode.StretchImage;
-            Click += onClick;
+            BackColor = Color.Transparent;
+            Click += OnClick;
 
+            // die fields
             rng = new Random();
+            enabled = true;
 
             // load images
             side1 = (Image)Properties.Resources.ResourceManager.GetObject("die1");
@@ -30,26 +34,28 @@ namespace Ludo
             side5 = (Image)Properties.Resources.ResourceManager.GetObject("die5");
             side6 = (Image)Properties.Resources.ResourceManager.GetObject("die6");
 
+            // give initial value + location
             Value = rng.Next(1, 7);
-            setImage(Value);
+            changeImage();
             moveAround();
         }
 
-        private void onClick(object sender, EventArgs e)
+        public void OnClick(object sender, EventArgs e)
         {
             if (enabled)
             {
                 Value = rng.Next(1, 7);
-                setImage(Value);
+                changeImage();
                 moveAround();
+                Disable();
 
                 parent.DieRolled();
             }
         }
 
-        private void setImage(int roll)
+        private void changeImage()
         {
-            switch (roll)
+            switch (Value)
             {
                 case 1: Image = side1; break;
                 case 2: Image = side2; break;

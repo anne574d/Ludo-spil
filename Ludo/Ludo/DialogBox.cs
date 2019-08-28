@@ -12,29 +12,22 @@ namespace Ludo
         public DialogBox(GUI parent)
         {
             parent.Controls.Add(this);
-            Location = new Point(10, 620);
-            Size = new Size(800, 290);
+            Location = new Point(20, 20);
+            Size = new Size(280, 100);
             Multiline = true;
             ReadOnly = true;
-
-            border = new Label();
-            parent.Controls.Add(border); 
-            border.Location = new Point(0, 610);
-            border.Size = new Size(820, 300);
-
-            ChangeColor("black");
+            BorderStyle = BorderStyle.None;
+            Font = new Font("Arial", 12, FontStyle.Regular);
         }
 
-        public void Print(string msg)
+        public void Write(string msg)
+        {
+            AppendText(msg);
+        }
+        public void WriteLine(string msg)
         {
             AppendText(msg + "\n");
         }
-        public void ChangeColor(string color)
-        {
-            border.BackColor = Game.GetColor(color);
-        }
-
-        Label border;
     }
 
 }
