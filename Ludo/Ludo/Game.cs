@@ -11,6 +11,8 @@ namespace Ludo
 {
     public class Game
     {
+        const int AIDELAY = 700;
+
         public Game()
         {
             validMoves = new List<int>();
@@ -22,21 +24,43 @@ namespace Ludo
             Application.Run(gui);
         }
 
+        public void Reset()
+        {
+            validMoves = new List<int>();
+            players = new List<Player>();
+            gameOver = false;
+            tries = 0;
+
+            gui = new GUI(this);
+            Application.Restart();
+        }
+
+
+        // Board drawing ///////////////////////////////////////////////////////
         private void setupBoard()
         {
+            // draw fields on board
             board = new Field[76];
             for (int i = 0; i < board.Length; ++i)
             {
                 board[i] = new Field(i, gui);
             }
-
+            // draw all four start zones
             foreach (var color in new List<string>() { "yellow", "blue", "red", "green" })
             {
                 gui.DrawStartZone(color);
             }
-
+        }
+        private void resetBoard()
+        {
+            for (int i = 0; i < board.Length; ++i)
+            {
+                // remove valid moves highlight
+                board[i].Highlight(false);
+            }
         }
 
+        // Game/player setup ///////////////////////////////////////////////
         public void AddPlayer(string color, bool isHuman)
         {
             players.Add(new Player(color, isHuman, gui));
@@ -67,6 +91,7 @@ namespace Ludo
             NextPlayer();
         }
 
+        // Gameplay //////////////////////////////////////////////////////////////////
         private void NextPlayer()
         {
             tries = 0;
@@ -76,7 +101,6 @@ namespace Ludo
             {
                 currentPlayer = 0;
             }
-
             //gui.Dialog.ChangeColor(players[currentPlayer].Color);
             gui.ChangeBorderColor(players[currentPlayer].Color);
             gui.Dialog.WriteLine($"{Captitalize(players[currentPlayer].Color)}'s turn. ");
@@ -89,7 +113,7 @@ namespace Ludo
             if (!players[currentPlayer].Human)
             {
                 // have COM player click die
-                Timer timer = new Timer { Enabled = true, Interval = 700 };
+                Timer timer = new Timer { Enabled = true, Interval = AIDELAY };
                 timer.Tick += (sender, e) =>
                 {
                     timer.Stop();
@@ -106,7 +130,7 @@ namespace Ludo
         {
             if (!players[currentPlayer].Human)
             {
-                Timer timer = new Timer { Enabled = true, Interval = 700 };
+                Timer timer = new Timer { Enabled = true, Interval = AIDELAY };
                 timer.Tick += (sender, e) =>
                 {
                     timer.Stop();
@@ -123,26 +147,29 @@ namespace Ludo
             }
             else
             {
-                gui.Dialog.WriteLine("Select a piece to move...");
                 // wait for user to click field/start
+                gui.Dialog.WriteLine("Select a piece to move...");
             }
         }
 
-        public void DieRolled()
-        {
-            playerTurn(players[currentPlayer]);
-        }
-
-        private void playerTurn(Player player)
+        private void checkIfDone(Player player)
         {
             if (player.IsDone())
             {
                 gameOver = true;
+                gui.WinnerScreen.Display(player.Color);
+            }
+        }
+
+        private void playerTurn()
+        {
+            if (gameOver)
+            {
                 return;
             }
 
             int roll = gui.GameDie.Value;
-            validMoves = player.ValidMoves(roll);
+            validMoves = players[currentPlayer].ValidMoves(roll);
 
             foreach (var i in validMoves)
             {
@@ -159,18 +186,25 @@ namespace Ludo
             else
             {
                 gui.GameDie.Enable();
+                gui.Dialog.WriteLine($"No valid moves available. ");
                 if (tries < 2)
                 {
                     ++tries;
-                    gui.Dialog.WriteLine($"No valid moves available. {3 - tries} tries left. ");
+                    gui.Dialog.WriteLine($"{3 - tries} tries left. ");
                     awaitDiceroll();                    
                 }
                 else
                 {
-                    gui.Dialog.WriteLine("No valid moves available. No tries left. ");
+                    gui.Dialog.WriteLine("No tries left. ");
                     NextPlayer();
                 }
             }
+        }
+
+        // Input, called from GUI/AI ////////////////////////////////////////
+        public void DieRolled()
+        {
+            playerTurn();
         }
 
         public void StartClicked(string color)
@@ -200,7 +234,9 @@ namespace Ludo
                 board[p.Position].IncomingPiece(p);
 
                 gui.GameDie.Enable();
-                resetBoard(); 
+                resetBoard();
+                validMoves.Clear();
+                checkIfDone(players[currentPlayer]);
 
                 if (roll == 6)
                 {
@@ -210,8 +246,7 @@ namespace Ludo
                 else
                 {
                     NextPlayer();
-                }
-                validMoves.Clear();
+                }                
             }
             else
             {
@@ -219,15 +254,7 @@ namespace Ludo
             }
         }
 
-        private void resetBoard()
-        {
-            for (int i = 0; i < board.Length; ++i)
-            {
-                // remove valid moves highlight
-                board[i].Highlight(false); 
-            }
-        }
-
+        // AI decision makin ////////////////////////////////////////////////////////////
         private int aiDecision()
         {
             List<double> movesPoints = new List<double>();
@@ -297,19 +324,19 @@ namespace Ludo
             return validMoves[movesPoints.IndexOf(movesPoints.Max())];
         }
 
+        // Statics ///////////////////////////////////////////////////////////////
         static public string Captitalize(string input)
         {
             return input.Substring(0, 1).ToUpper() + input.Substring(1).ToLower();
         }
 
+        // Field //////////////////////////////////////////////////////////////////
         Field[] board;
         List<Player> players;
         int currentPlayer;
-
-        bool gameOver;
-
         List<int> validMoves;
-        int tries; 
+        int tries;
+        bool gameOver;
 
         GUI gui;
     }

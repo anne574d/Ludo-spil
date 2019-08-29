@@ -20,7 +20,7 @@ namespace Ludo
 
             setupLabel();
         }
-        // Incoming / outgoing ///////////////////////////////////////////
+        // Incoming / outgoing /////////////////////////////////////////////////
         public void IncomingPiece(Piece piece)
         {
             if (EnemyDominated(piece.Color))
@@ -54,7 +54,8 @@ namespace Ludo
             // return first piece, its number is irrelevent
             return pieces[0];
         }
-        // Checking functions ///////////////////////////////////////////
+
+        // Checking functions /////////////////////////////////////////////////////
         public bool EnemyDominated(string incomingColor)
         {
             return (pieces.Count > 1 && currentColor != incomingColor);
@@ -76,7 +77,7 @@ namespace Ludo
             return (incomingColor == currentColor && pieces.Count > 0);
         }
 
-        // Graphic functions ///////////////////////////////////////////
+        // Graphic functions ///////////////////////////////////////////////////////////
         public void OnClick(object sender, EventArgs e)
         {
             parent.FieldClicked(index);
@@ -86,7 +87,7 @@ namespace Ludo
             Parent = parent;
             Width = 50;
             Height = 50;
-            BorderStyle = BorderStyle.Fixed3D;
+            BorderStyle = BorderStyle.FixedSingle;
             Click += OnClick;
 
             //Text = index.ToString();
@@ -112,20 +113,27 @@ namespace Ludo
             {
                 BackColor = GUI.GetColor("green");
             }
+            else
+            {
+                BackColor = GUI.GetColor("white");
+            }
         }
 
         public void Highlight(bool on)
         {
+            /*
             if (on)
-            {
-                BorderStyle = BorderStyle.FixedSingle;
-            }
-            else
             {
                 BorderStyle = BorderStyle.Fixed3D;
             }
+            else
+            {
+                BorderStyle = BorderStyle.FixedSingle;
+            }
+            */
         }
 
+        // Fields ///////////////////////////////////////////////////////////////////
         List<Piece> pieces;
         string currentColor;
         int index;

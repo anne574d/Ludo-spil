@@ -23,18 +23,23 @@ namespace Ludo
             setupBorder();
         }
 
+        // Setup elements ////////////////////////////////////////////////
         private void setupWindow()
         {
             // Window settings
             Width = 820;
             Height = 820;
             MaximizeBox = false;
+            BackColor = GUI.GetColor("black");
             FormBorderStyle = FormBorderStyle.FixedSingle;
             StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void setupElements()
         {
+            // Winner screen
+            WinnerScreen = new EndScreen(this);
+
             // Open start screen / player select menu
             playerMenu = new PlayerSelectionMenu(this);
 
@@ -76,6 +81,19 @@ namespace Ludo
             Controls.Add(borderRight);
         }
 
+        public void DrawStartZone(string color)
+        {
+            PictureBox startZone = new PictureBox();
+            Controls.Add(startZone);
+
+            startZone.Size = new Size(150, 150);
+            startZone.Location = StartLocation(color);
+            startZone.SizeMode = PictureBoxSizeMode.StretchImage;
+            startZone.Image = (Image)Properties.Resources.ResourceManager.GetObject("start_" + color);
+
+            startZone.Click += (object sender, EventArgs e) => { parent.StartClicked(color); };
+        }
+
         public void ChangeBorderColor(string color)
         {
             foreach (var side in border)
@@ -84,6 +102,7 @@ namespace Ludo
             }
         }
 
+        // Input reactions /////////////////////////////////////////////
         public void ExitPlayerSelectionMenu()
         {
             foreach (var player in playerMenu.GetPlayers())
@@ -108,22 +127,12 @@ namespace Ludo
             Debug.Write($"{winner.Color} WINS!");
         }
 
-        public void DrawStartZone(string color)
+        public void Replay()
         {
-            PictureBox startZone = new PictureBox();
-            Controls.Add(startZone);
-
-            startZone.Size = new Size(150, 150);
-            startZone.Location = StartLocation(color);
-            startZone.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            startZone.Image = (Image)Properties.Resources.ResourceManager.GetObject("start"+Game.Captitalize(color));
-            //startZone.BackColor = GetColor(color); // remove when pictures added
-
-            startZone.Click += (object sender, EventArgs e) => { parent.StartClicked(color); };
+            parent.Reset();
         }
 
-        // static methods ////////////////////////////////////////////
+        // Static methods ////////////////////////////////////////////
         public static Color GetColor(string color)
         {
             switch (color)
@@ -131,7 +140,9 @@ namespace Ludo
                 case "red": return Color.Red;
                 case "blue": return Color.DeepSkyBlue;
                 case "yellow": return Color.Gold;
-                case "green": return Color.Green;
+                case "green": return Color.ForestGreen;
+                case "white": return Color.White;
+                case "black": return Color.Black;
 
                 default: return Color.Black;
             }
@@ -238,11 +249,12 @@ namespace Ludo
             }
         }
 
-
+        // Fields /////////////////////////////////////////////////////////
         List<Label> border;
         Game parent;
         PlayerSelectionMenu playerMenu;
         public Die GameDie;
         public DialogBox Dialog;
+        public EndScreen WinnerScreen;
     }
 }

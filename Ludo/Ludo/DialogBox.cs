@@ -13,11 +13,13 @@ namespace Ludo
         {
             parent.Controls.Add(this);
             Location = new Point(20, 20);
-            Size = new Size(280, 100);
+            Size = new Size(275, 80);
             Multiline = true;
             ReadOnly = true;
             BorderStyle = BorderStyle.None;
-            Font = new Font("Arial", 12, FontStyle.Regular);
+            ForeColor = GUI.GetColor("white");
+            BackColor = GUI.GetColor("black");
+            Font = new Font("Arial", 14, FontStyle.Regular);
         }
 
         public void Write(string msg)
@@ -29,5 +31,4 @@ namespace Ludo
             AppendText(msg + "\n");
         }
     }
-
 }

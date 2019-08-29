@@ -123,9 +123,9 @@ namespace Ludo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap startBlue {
+        internal static System.Drawing.Bitmap piece_blue {
             get {
-                object obj = ResourceManager.GetObject("startBlue", resourceCulture);
+                object obj = ResourceManager.GetObject("piece_blue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace Ludo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap startGreen {
+        internal static System.Drawing.Bitmap piece_green {
             get {
-                object obj = ResourceManager.GetObject("startGreen", resourceCulture);
+                object obj = ResourceManager.GetObject("piece_green", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace Ludo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap startRed {
+        internal static System.Drawing.Bitmap piece_red {
             get {
-                object obj = ResourceManager.GetObject("startRed", resourceCulture);
+                object obj = ResourceManager.GetObject("piece_red", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,49 @@ namespace Ludo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap startYellow {
+        internal static System.Drawing.Bitmap piece_yellow {
             get {
-                object obj = ResourceManager.GetObject("startYellow", resourceCulture);
+                object obj = ResourceManager.GetObject("piece_yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start_blue {
+            get {
+                object obj = ResourceManager.GetObject("start_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start_green {
+            get {
+                object obj = ResourceManager.GetObject("start_green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start_red {
+            get {
+                object obj = ResourceManager.GetObject("start_red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start_yellow {
+            get {
+                object obj = ResourceManager.GetObject("start_yellow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

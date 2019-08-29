@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace Ludo
 {
-    public class PlayerSelectionMenu : GroupBox
+    public class PlayerSelectionMenu : Panel
     {
         public PlayerSelectionMenu(GUI parent)
         {
@@ -32,8 +32,10 @@ namespace Ludo
             title.Text = "L U D O";
             title.TextAlign = ContentAlignment.MiddleCenter;
             title.Font = new Font("Arial", 100, FontStyle.Bold);
-            title.BackColor = Color.Black;
-            title.ForeColor = Color.White;
+            title.BackColor = GUI.GetColor("black");
+            title.ForeColor = GUI.GetColor("white");
+
+            title.Click += (sender, e) => { System.Environment.Exit(0); };
         }
 
         private void addStart()
@@ -45,8 +47,8 @@ namespace Ludo
             start.Text = "S T A R T";
             start.TextAlign = ContentAlignment.MiddleCenter;
             start.Font = new Font("Arial", 100, FontStyle.Bold);
-            start.BackColor = Color.Black;
-            start.ForeColor = Color.White;
+            start.BackColor = GUI.GetColor("black");
+            start.ForeColor = GUI.GetColor("white");
 
             start.Click += startClicked;
         }
@@ -101,7 +103,6 @@ namespace Ludo
             return result;
         }
 
-        // Fields
         GUI parent;
     }
 

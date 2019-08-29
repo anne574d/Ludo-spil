@@ -19,7 +19,6 @@ namespace Ludo
             // picturebox fields
             Size = new Size(75, 75);
             SizeMode = PictureBoxSizeMode.StretchImage;
-            BackColor = Color.Transparent;
             Click += OnClick;
 
             // die fields

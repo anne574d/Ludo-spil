@@ -66,6 +66,9 @@
     <Compile Include="Die.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="EndScreen.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Gui.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,13 +120,40 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\die1.png" />
+    <None Include="Resources\startBlue.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\die2.png" />
+    <None Include="Resources\startGreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\die3.png" />
+    <None Include="Resources\startRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\startYellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piece_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piece_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piece_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piece_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\die4.png" />
@@ -135,16 +165,13 @@
     <None Include="Resources\die6.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\startBlue.png" />
+    <None Include="Resources\die1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\startGreen.png" />
+    <None Include="Resources\die2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\startRed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\startYellow.png" />
+    <None Include="Resources\die3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,8 +11,11 @@ namespace Ludo
 {
     public class Piece : PictureBox
     {
-        public Piece(string playerColor, int pieceNumber, GUI gui)
+        public Piece(string playerColor, int pieceNumber, GUI parent)
         {
+            this.parent = parent;
+            parent.Controls.Add(this);
+
             // piece fields
             Color = playerColor;
             Number = pieceNumber;
@@ -21,12 +24,9 @@ namespace Ludo
             createRoute();
 
             // picturebox fields
-            gui.Controls.Add(this);
             Size = new Size(20, 20);
-            BackColor = GUI.GetColor(playerColor); // todo replace with Image
-            BorderStyle = BorderStyle.FixedSingle; // todo remove 
-            //Image = (Image)Properties.Resources.ResourceManager.GetObject(playerColor + "piece");
-            //Click += (object sender, EventArgs e) => { gui.ClickEvent(sender, e)}; // click through-able
+            Image = (Image)Properties.Resources.ResourceManager.GetObject("piece_" + playerColor);
+            Click += onClick;
             moveGraphic();
         }
 
@@ -92,6 +92,15 @@ namespace Ludo
         }
 
         // Graphics ////////////////////////////////////////
+
+        private void onClick(object sender, EventArgs e)
+        {
+            if (Position != -1)
+            {
+                parent.FieldClicked(Position);
+            }
+        }
+
         private void moveGraphic()
         {
             Point newLocation = new Point();
@@ -120,7 +129,7 @@ namespace Ludo
             Location = newLocation;
         }
             
-        // Color specific positions ////////////////////////////////////////
+        // Color specific functios ////////////////////////////////////////
         private void createRoute()
         {
             /* createRoute() is called in constructor.
@@ -169,7 +178,6 @@ namespace Ludo
 
            HOMELANE: Colored lane that leads to home (the goal).
            Only pieces with matching color can enter homelane */
-
         private int startExit()
         {
             int result;
@@ -224,12 +232,14 @@ namespace Ludo
             return result;
         }
 
-        // Publics //////////////////////////////
+        // Publics /////////////////////////////////////////////////
         public int Position { get; private set; }
         public int Number { get; private set; }
         public string Color { get; private set; }
         public bool IsHome { get; private set; }
-        // Privates /////////////////////////////
-        private List<int> route;
+
+        // Privates ////////////////////////////////////////////////
+        List<int> route;
+        GUI parent;
     }
 }

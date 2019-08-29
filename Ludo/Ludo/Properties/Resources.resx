@@ -136,16 +136,28 @@
   <data name="die6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\die6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="startBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\startBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="piece_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\piece_blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="startGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\startGreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="piece_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\piece_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="startRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\startRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="piece_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\piece_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="startYellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\startYellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="piece_yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\piece_yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="start_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\start_blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="start_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\start_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="start_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\start_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="start_yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\start_yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

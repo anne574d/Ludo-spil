@@ -16,8 +16,6 @@ namespace Ludo
             Application.SetCompatibleTextRenderingDefault(false);
 
             Game game = new Game();
-            //Application.Run(new GUI());
-
         }
     }
 }
