@@ -51,6 +51,7 @@ namespace Ludo
             return res;
         }
 
+        /*
         public List<int> ValidMoves(int diceroll)
         {
             List<int> result = new List<int>();
@@ -59,11 +60,11 @@ namespace Ludo
                 result.Add(GetPiece(piece).Position);
             }
             return result;
-        }
+        }*/
 
-        private List<int> moveablePieces(int diceroll)
+        public List<Piece> MoveablePieces(int diceroll)
         {
-            List<int> res = new List<int>();
+            List<Piece> res = new List<Piece>();
             bool valid;
 
             foreach (var p1 in Pieces)
@@ -86,7 +87,7 @@ namespace Ludo
                 }
                 if (valid)
                 {
-                    res.Add(p1.Number);
+                    res.Add(p1);
                 }
             }
             return res;

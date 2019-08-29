@@ -27,7 +27,7 @@ namespace Ludo
             Size = new Size(20, 20);
             Image = (Image)Properties.Resources.ResourceManager.GetObject("piece_" + playerColor);
             BringToFront();
-            Click += onClick;
+            Click += OnClick;
             moveGraphic();
         }
 
@@ -94,12 +94,9 @@ namespace Ludo
 
         // Graphics ////////////////////////////////////////
 
-        private void onClick(object sender, EventArgs e)
+        public void OnClick(object sender, EventArgs e)
         {
-            if (Position != -1)
-            {
-                gui.FieldClicked(Position);
-            }
+            gui.PieceClicked(this);
         }
 
         private void moveGraphic()

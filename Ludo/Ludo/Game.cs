@@ -15,7 +15,7 @@ namespace Ludo
 
         public Game()
         {
-            validMoves = new List<int>();
+            validMoves = new List<Piece>();
             players = new List<Player>();
             gameOver = false;
             tries = 0;
@@ -47,11 +47,6 @@ namespace Ludo
             {
                 board[i] = new Field(i, gui);
             }
-            // draw all four start zones
-            //foreach (var color in new List<string>() { "yellow", "blue", "red", "green" })
-            //{
-            //    gui.DrawStartZone(color);
-            //}
         }
         private void resetBoard()
         {
@@ -68,7 +63,7 @@ namespace Ludo
             players.Add(new Player(color, isHuman, gui));
         }
 
-        public void DecidePlayOrder()
+        private void decidePlayOrder()
         {
             Random rng = new Random();
             int rnd = rng.Next(8);
@@ -89,6 +84,7 @@ namespace Ludo
 
         public void StartGame()
         {
+            decidePlayOrder();
             setupBoard();
             NextPlayer();
         }
@@ -112,6 +108,11 @@ namespace Ludo
 
         private void awaitDiceroll()
         {
+            if (gameOver)
+            {
+                return;
+            }
+
             if (!players[currentPlayer].Human)
             {
                 // have COM player click die
@@ -130,21 +131,19 @@ namespace Ludo
         }
         private void awaitPieceMove()
         {
+            if (gameOver)
+            {
+                return;
+            }
+
             if (!players[currentPlayer].Human)
             {
                 Timer timer = new Timer { Enabled = true, Interval = AIDELAY };
                 timer.Tick += (sender, e) =>
                 {
                     timer.Stop();
-                    int bestMove = aiDecision();
-                    if (bestMove == -1)
-                    {
-                        StartClicked(players[currentPlayer].Color);
-                    }
-                    else
-                    {
-                        board[aiDecision()].OnClick(null, null);
-                    }
+                    // click piece with best movement score to move it
+                    aiDecision().OnClick(null, null);
                 };
             }
             else
@@ -171,15 +170,7 @@ namespace Ludo
             }
 
             int roll = gui.GameDie.Value;
-            validMoves = players[currentPlayer].ValidMoves(roll);
-
-            foreach (var i in validMoves)
-            {
-                if (i != -1)
-                {
-                    board[i].Highlight(true);
-                }
-            }
+            validMoves = players[currentPlayer].MoveablePieces(roll);
 
             if (validMoves.Count > 0)
             {
@@ -213,33 +204,35 @@ namespace Ludo
         {
             if (color == players[currentPlayer].Color)
             {
-                MovePiece(-1);
+                MovePiece(players[currentPlayer].GetPieceAtStart());
             }
         }
 
-        public void MovePiece(int fieldIndex)
+        public void FieldClicked(int index)
         {
-            if (validMoves.Contains(fieldIndex))
+            MovePiece(board[index].GetPiece());
+        }
+
+        public void MovePiece(Piece piece)
+        {
+            if (validMoves.Contains(piece))
             {
+                // move piece
                 int roll = gui.GameDie.Value;
-
-                Piece p;
-                if (fieldIndex != -1)
+                if (!piece.IsAtStart())
                 {
-                    p = board[fieldIndex].OutgoingPiece();
+                    board[piece.Position].OutgoingPiece(piece);
                 }
-                else
-                {
-                    p = players[currentPlayer].GetPieceAtStart();
-                }
-                p.MovePiece(roll);
-                board[p.Position].IncomingPiece(p);
+                piece.MovePiece(roll);
+                board[piece.Position].IncomingPiece(piece);
 
+                // prepare for next turn
                 gui.GameDie.Enable();
                 resetBoard();
                 validMoves.Clear();
                 checkIfDone(players[currentPlayer]);
 
+                // check for extra turn
                 if (roll == 6)
                 {
                     gui.Dialog.WriteLine($"{Captitalize(players[currentPlayer].Color)} rolled a 6 and gets another turn. ");
@@ -257,61 +250,51 @@ namespace Ludo
         }
 
         // AI decision makin ////////////////////////////////////////////////////////////
-        private int aiDecision()
+        private Piece aiDecision()
         {
             List<double> movesPoints = new List<double>();
             double points = 0;
 
             Player ai = players[currentPlayer]; // redudent, makes code nicer looking
             int roll = gui.GameDie.Value;
-            int piece;
 
-            foreach (var fieldIndex in validMoves)
+            foreach (Piece piece in validMoves)
             {
-                if (fieldIndex == -1)
-                {
-                    piece = ai.GetPieceAtStart().Number;
-                }
-                else
-                {
-                    piece = board[fieldIndex].GetPiece().Number;
-                }
-               
-                int posStart = ai.GetPiece(piece).Position;
-                int pos = ai.GetPiece(piece).LandsOnField(roll);
-                double howFarAhead = (double)ai.GetPiece(piece).IndexOnRoute(posStart) / 100;
+                int posStart = piece.Position;
+                int posEnd = piece.LandsOnField(roll);
+                double howFarAhead = (double)piece.IndexOnRoute(posStart) / 100;
 
-                if (board[pos].IsHomeField())
+                if (board[posEnd].IsHomeField())
                 {
                     // will hit home
                     points = 10.0;
                 }
-                else if (board[pos].EnemyDominated(ai.Color))
+                else if (board[posEnd].EnemyDominated(ai.Color))
                 {
                     // will be send home
                     points = 0.0 - howFarAhead;
                 }
-                else if (board[pos].SingleEnemy(ai.Color))
+                else if (board[posEnd].SingleEnemy(ai.Color))
                 {
                     // will send an enemy home
                     points = 9 + howFarAhead;
                 }
-                else if (ai.GetPiece(piece).CanLeaveStart(roll))
+                else if (piece.CanLeaveStart(roll))
                 {
                     // will exit start
                     points = 7.0;
                 }
-                else if (!board[posStart].IsHomeLane() && board[pos].IsHomeLane())
+                else if (!board[posStart].IsHomeLane() && board[posEnd].IsHomeLane())
                 {
                     // will enter home lane
                     points = 8 + howFarAhead;
                 }
-                else if (board[pos].IsHomeLane())
+                else if (board[posEnd].IsHomeLane())
                 {
                     // will move around on home lane
                     points = 4 + howFarAhead;
                 }
-                else if (board[pos].HasFriendlyPiece(ai.Color))
+                else if (board[posEnd].HasFriendlyPiece(ai.Color))
                 {
                     // will group up with friendly piece
                     points = 6 + howFarAhead;
@@ -323,6 +306,7 @@ namespace Ludo
                 }
                 movesPoints.Add(points);
             }
+            // return number of piece with best move
             return validMoves[movesPoints.IndexOf(movesPoints.Max())];
         }
 
@@ -336,7 +320,7 @@ namespace Ludo
         Field[] board;
         List<Player> players;
         int currentPlayer;
-        List<int> validMoves;
+        List<Piece> validMoves;
         int tries;
         bool gameOver;
 

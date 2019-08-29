@@ -122,9 +122,13 @@ namespace Ludo
             parent.DieRolled();
         }
 
+        public void PieceClicked(Piece piece)
+        {
+            parent.MovePiece(piece);
+        }
         public void FieldClicked(int index)
         {
-            parent.MovePiece(index);
+            parent.FieldClicked(index);
         }
 
         public void ShowEndScreen(Player winner)

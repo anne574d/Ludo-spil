@@ -42,17 +42,22 @@ namespace Ludo
                 pieces.Add(piece);
             }
         }
-        public Piece OutgoingPiece()
+        public void OutgoingPiece(Piece piece)
         {
-            Piece p = pieces[0];
-            pieces.RemoveAt(0);
-            return p;
+            pieces.Remove(piece);
         }
 
         public Piece GetPiece()
         {
-            // return first piece, its number is irrelevent
-            return pieces[0];
+            if (pieces.Count > 0)
+            {
+                // return first piece, its number is irrelevent
+                return pieces[0];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         // Checking functions /////////////////////////////////////////////////////
