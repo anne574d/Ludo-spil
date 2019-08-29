@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "GUI";
-            this.Text = "GUI";
+            this.Text = "L U D O";
             this.ResumeLayout(false);
 
         }

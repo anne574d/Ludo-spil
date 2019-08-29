@@ -18,6 +18,7 @@ namespace Ludo
 
             // picturebox fields
             Size = new Size(75, 75);
+            Location = new Point(363,363); // center of board
             SizeMode = PictureBoxSizeMode.StretchImage;
             Click += OnClick;
 
@@ -33,14 +34,14 @@ namespace Ludo
             side5 = (Image)Properties.Resources.ResourceManager.GetObject("die5");
             side6 = (Image)Properties.Resources.ResourceManager.GetObject("die6");
 
-            // give initial value + location
+            // give initial value
             Value = rng.Next(1, 7);
             changeImage();
-            moveAround();
         }
 
         public void OnClick(object sender, EventArgs e)
         {
+            BringToFront();
             if (enabled)
             {
                 Value = rng.Next(1, 7);

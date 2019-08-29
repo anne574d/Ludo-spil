@@ -38,7 +38,7 @@ namespace Ludo
         private void setupElements()
         {
             // Winner screen
-            WinnerScreen = new EndScreen(this);
+            winnerScreen = new EndScreen(this);
 
             // Open start screen / player select menu
             playerMenu = new PlayerSelectionMenu(this);
@@ -48,6 +48,11 @@ namespace Ludo
 
             // load in dialog box
             Dialog = new DialogBox(this);
+
+            foreach (var color in new List<string>() {"yellow", "blue", "red", "green" })
+            {
+                drawStartZone(color);
+            }
         }
 
         private void setupBorder()
@@ -81,7 +86,7 @@ namespace Ludo
             Controls.Add(borderRight);
         }
 
-        public void DrawStartZone(string color)
+        private void drawStartZone(string color)
         {
             PictureBox startZone = new PictureBox();
             Controls.Add(startZone);
@@ -124,7 +129,7 @@ namespace Ludo
 
         public void ShowEndScreen(Player winner)
         {
-            Debug.Write($"{winner.Color} WINS!");
+            winnerScreen.Display(winner.Color);
         }
 
         public void Replay()
@@ -253,8 +258,9 @@ namespace Ludo
         List<Label> border;
         Game parent;
         PlayerSelectionMenu playerMenu;
+        EndScreen winnerScreen;
         public Die GameDie;
         public DialogBox Dialog;
-        public EndScreen WinnerScreen;
+        
     }
 }

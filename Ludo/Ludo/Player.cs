@@ -109,6 +109,5 @@ namespace Ludo
         public List<Piece> Pieces;
         public string Color { get; private set; }
         public bool Human { get; private set; }
-        public int StartRoll = 0; 
     }
 }

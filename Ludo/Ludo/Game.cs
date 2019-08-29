@@ -26,6 +26,7 @@ namespace Ludo
 
         public void Reset()
         {
+            /*
             validMoves = new List<int>();
             players = new List<Player>();
             gameOver = false;
@@ -33,6 +34,7 @@ namespace Ludo
 
             gui = new GUI(this);
             Application.Restart();
+            */
         }
 
 
@@ -46,10 +48,10 @@ namespace Ludo
                 board[i] = new Field(i, gui);
             }
             // draw all four start zones
-            foreach (var color in new List<string>() { "yellow", "blue", "red", "green" })
-            {
-                gui.DrawStartZone(color);
-            }
+            //foreach (var color in new List<string>() { "yellow", "blue", "red", "green" })
+            //{
+            //    gui.DrawStartZone(color);
+            //}
         }
         private void resetBoard()
         {
@@ -157,7 +159,7 @@ namespace Ludo
             if (player.IsDone())
             {
                 gameOver = true;
-                gui.WinnerScreen.Display(player.Color);
+                gui.ShowEndScreen(player);
             }
         }
 

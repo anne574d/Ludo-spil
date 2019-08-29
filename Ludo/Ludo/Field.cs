@@ -11,9 +11,9 @@ namespace Ludo
 {
     public class Field : Label
     {
-        public Field(int i, GUI parent)
+        public Field(int i, GUI gui)
         {
-            this.parent = parent;
+            this.gui = gui;
             pieces = new List<Piece>();
             currentColor = "";
             index = i;
@@ -80,11 +80,11 @@ namespace Ludo
         // Graphic functions ///////////////////////////////////////////////////////////
         public void OnClick(object sender, EventArgs e)
         {
-            parent.FieldClicked(index);
+            gui.FieldClicked(index);
         }
         private void setupLabel()
         {
-            Parent = parent;
+            gui.Controls.Add(this);
             Width = 50;
             Height = 50;
             BorderStyle = BorderStyle.FixedSingle;
@@ -137,6 +137,6 @@ namespace Ludo
         List<Piece> pieces;
         string currentColor;
         int index;
-        GUI parent;
+        GUI gui;
     }
 }

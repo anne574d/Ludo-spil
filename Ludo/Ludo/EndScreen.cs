@@ -56,6 +56,8 @@ namespace Ludo
             replay.BackColor = GUI.GetColor(color);
             quit.BackColor = GUI.GetColor(color);
 
+            BringToFront();
+
             winner.Text = $"{color.ToUpper()} WINS!";
             Show();
         }

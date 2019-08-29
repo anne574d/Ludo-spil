@@ -56,15 +56,11 @@ namespace Ludo
         private void addColors()
         {
             List<string> colors = new List<string> { "green", "yellow", "blue", "red" };
-            int xPos = 0;
 
-            foreach (var col in colors)
+            for(int i = 0; i < colors.Count; ++i)
             {
-                PlayerSelect lbl = new PlayerSelect(col);
+                PlayerSelect lbl = new PlayerSelect(colors[i], 205 * i);
                 Controls.Add(lbl);
-                lbl.MoveHorizontally(xPos);
-
-                xPos += 205;
             }
         }
 
@@ -108,12 +104,13 @@ namespace Ludo
 
     public class PlayerSelect : Label
     {
-        public PlayerSelect(string color)
+        public PlayerSelect(string color, int xPos)
         {
             playerColor = color;
 
             BackColor = GUI.GetColor(color);
             Size = new Size(205, 820);
+            Location = new Point(xPos, 0);
             Text = "";
             TextAlign = ContentAlignment.MiddleCenter;
             Font = new Font("Arial", 24, FontStyle.Bold);
@@ -121,10 +118,6 @@ namespace Ludo
             Click += onClick;
         }
 
-        public void MoveHorizontally(int x)
-        {
-            Location = new Point(x, 0);
-        }
         private void onClick(object sender, EventArgs e)
         {
             switch (Text)

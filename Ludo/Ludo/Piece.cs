@@ -11,10 +11,10 @@ namespace Ludo
 {
     public class Piece : PictureBox
     {
-        public Piece(string playerColor, int pieceNumber, GUI parent)
+        public Piece(string playerColor, int pieceNumber, GUI gui)
         {
-            this.parent = parent;
-            parent.Controls.Add(this);
+            this.gui = gui;
+            gui.Controls.Add(this);
 
             // piece fields
             Color = playerColor;
@@ -26,6 +26,7 @@ namespace Ludo
             // picturebox fields
             Size = new Size(20, 20);
             Image = (Image)Properties.Resources.ResourceManager.GetObject("piece_" + playerColor);
+            BringToFront();
             Click += onClick;
             moveGraphic();
         }
@@ -97,7 +98,7 @@ namespace Ludo
         {
             if (Position != -1)
             {
-                parent.FieldClicked(Position);
+                gui.FieldClicked(Position);
             }
         }
 
@@ -240,6 +241,6 @@ namespace Ludo
 
         // Privates ////////////////////////////////////////////////
         List<int> route;
-        GUI parent;
+        GUI gui;
     }
 }

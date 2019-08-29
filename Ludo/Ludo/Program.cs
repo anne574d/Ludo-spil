@@ -12,6 +12,7 @@ namespace Ludo
     {
         static void Main(string[] args)
         {
+            Console.SetWindowSize(20, 1);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
