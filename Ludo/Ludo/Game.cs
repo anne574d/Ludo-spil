@@ -26,15 +26,7 @@ namespace Ludo
 
         public void Reset()
         {
-            /*
-            validMoves = new List<int>();
-            players = new List<Player>();
-            gameOver = false;
-            tries = 0;
-
-            gui = new GUI(this);
             Application.Restart();
-            */
         }
 
 

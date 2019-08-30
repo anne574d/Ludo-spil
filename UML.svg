@@ -1,177 +1,386 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="63cm" height="37cm" viewBox="24 80 1253 740" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="89cm" height="52cm" viewBox="245 9 1774 1023" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
-    <rect style="fill: #ffffff" x="25" y="101" width="1251" height="718"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="25" y="101" width="1251" height="718"/>
-    <rect style="fill: #ffffff" x="25" y="81" width="119.5" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="25" y="81" width="119.5" height="20"/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="27" y="95">namespace: Ludo</text>
+    <rect style="fill: #ffffff" x="246.506" y="106.045" width="1771.47" height="879.401"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="246.506" y="106.045" width="1771.47" height="879.401"/>
+    <rect style="fill: #ffffff" x="246.506" y="86.0454" width="119.5" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="246.506" y="86.0454" width="119.5" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="248.506" y="100.045">namespace: Ludo</text>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="64" y="489" width="364.2" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="64" y="489" width="364.2" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="246.1" y="509">Printer</text>
-    <rect style="fill: #ffffff" x="64" y="517" width="364.2" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="64" y="517" width="364.2" height="8"/>
-    <rect style="fill: #ffffff" x="64" y="525" width="364.2" height="260"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="64" y="525" width="364.2" height="260"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="538.2">+Printer(): Printer</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="554.2">+PrintBoard(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="570.2">+UpdateBoard(players:List&lt;Player&gt;): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="586.2">+PrintStartScreen(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="602.2">+PrintEndScreen(winner:Player): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="618.2">+ChangeFontColor(color:string): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="634.2">+()</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="650.2">-drawBoxes(colored:bool): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="666.2">-drawBox(notEmpty:bool): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="682.2">-boxAtPosition(x:int,y:int,colored:bool): bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="698.2">-clearField(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="714.2">-clearDialog(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="730.2">-placePiece(piece:Piece): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="746.2">-moveCursorOutsideBoard(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="762.2">-moveToField(field:int): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="67" y="778.2">-moveToStart(color:string): void</text>
+    <rect style="fill: #ffffff" x="717.464" y="618.176" width="379.6" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="717.464" y="618.176" width="379.6" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="907.264" y="638.176">Player</text>
+    <rect style="fill: #ffffff" x="717.464" y="646.176" width="379.6" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="717.464" y="646.176" width="379.6" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="659.376">+Color: string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="675.376">+Human: bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="691.376">+Pieces: List&lt;Piece&gt;</text>
+    <rect style="fill: #ffffff" x="717.464" y="698.176" width="379.6" height="132"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="717.464" y="698.176" width="379.6" height="132"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="711.376">+Player(color:string,human:bool,gui:GUI): Player</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="727.376">+GetPiece(number:int): Piece</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="743.376">+GetPieceAtStart(): Piece</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="759.376">+IsDone(): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="775.376">+ValidMoves(diceroll:int): List&lt;int&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="791.376">+SortOrder(): int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="807.376">+()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="720.464" y="823.376">-movablePieces(diceroll:int): List&lt;int&gt;</text>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="472" y="366" width="318" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="472" y="366" width="318" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="631" y="386">Player</text>
-    <rect style="fill: #ffffff" x="472" y="394" width="318" height="68"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="472" y="394" width="318" height="68"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="475" y="407.2">+Color: string</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="475" y="423.2">+Human: bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="475" y="439.2">+Pieces: List&lt;Piece&gt;</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="475" y="455.2">+StartRoll: int</text>
-    <rect style="fill: #ffffff" x="472" y="462" width="318" height="84"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="472" y="462" width="318" height="84"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="475" y="475.2">+Player(color:string,human:bool): Player</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="475" y="491.2">+GetPiece(number:int): Piece</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="475" y="507.2">+IsDone(): bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="475" y="523.2">+MovablePieces(diceroll:int): List&lt;int&gt;</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="475" y="539.2">+SortOrder(): int</text>
+    <rect style="fill: #ffffff" x="299.506" y="142.84" width="325.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="299.506" y="142.84" width="325.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="462.356" y="162.84">Game</text>
+    <rect style="fill: #ffffff" x="299.506" y="170.84" width="325.7" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="299.506" y="170.84" width="325.7" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="184.04">-board: Field[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="200.04">-players: List&lt;Player&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="216.04">-validMoves: List&lt;Piece&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="232.04">-gui: GUI</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="248.04">-gameover: bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="264.04">-tries: int</text>
+    <rect style="fill: #ffffff" x="299.506" y="270.84" width="325.7" height="292"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="299.506" y="270.84" width="325.7" height="292"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="284.04">+Game(): Game</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="300.04">+AddPlayer(color:string,human:bool): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="316.04">+StartGame(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="332.04">+NextPlayer(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="348.04">+DieRolled(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="364.04">+StartClicked(color:string): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="380.04">+FieldClicked(index:int): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="396.04">+MovePiece(piece:Piece): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="412.04">+Capitalize(input:string): string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="428.04">+()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="444.04">-setupBoard(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="460.04">-resetBoard()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="476.04">-decidePlayOrder(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="492.04">-playerTurn(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="508.04">-awaitDiceroll(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="524.04">-awaitPieceMove()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="540.04">-checkIfDone(player:Player): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="302.506" y="556.04">-aiDecision(): Piece</text>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="65" y="133" width="341.1" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="65" y="133" width="341.1" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="235.55" y="153">Game</text>
-    <rect style="fill: #ffffff" x="65" y="161" width="341.1" height="68"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="65" y="161" width="341.1" height="68"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="174.2">-board: Field[]</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="190.2">-printer: Printer</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="206.2">-gameover: bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="222.2">-die: Random</text>
-    <rect style="fill: #ffffff" x="65" y="229" width="341.1" height="212"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="65" y="229" width="341.1" height="212"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="242.2">+Game(): Game</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="258.2">+Capitalize(input:string): string</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="274.2">+RollDie(): int</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="290.2">+RollDie(n:int): int</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="306.2">+()</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="322.2">-setupGame(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="338.2">-startScreen(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="354.2">-selectPlayersMenu(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="370.2">-decidePlayOrder(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="386.2">-beginGame(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="402.2">-playerTurn(player:Player,tries:int): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="418.2">-aiDecision(ai:Player,validMoves:List&lt;int&gt;,</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="68" y="434.2">            diceroll:int): int</text>
+    <rect style="fill: #ffffff" x="292.096" y="620.96" width="356.5" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="292.096" y="620.96" width="356.5" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="470.346" y="640.96">Field</text>
+    <rect style="fill: #ffffff" x="292.096" y="648.96" width="356.5" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="292.096" y="648.96" width="356.5" height="68"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="662.16">-pieces: List&lt;Piece&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="678.16">-currentColor: string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="694.16">-index: int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="710.16">-gui: GUI</text>
+    <rect style="fill: #ffffff" x="292.096" y="716.96" width="356.5" height="228"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="292.096" y="716.96" width="356.5" height="228"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="730.16">+Field(i:int,gui:GUI): Field</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="746.16">+IncomingPiece(piece:Piece): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="762.16">+OutGoingPiece(piece:Piece): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="778.16">+GetPiece(): Piece</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="794.16">+EnemyDominated(incomingColor:string): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="810.16">+SingleEnemy(incomingColor:string): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="826.16">+IsHomeField(): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="842.16">+IsHomeLane(): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="858.16">+HasFriendlyPiece(incomingColor:string): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="874.16">+OnClick(sender:object,e:EventArgs): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="890.16">+Hightlight(on:bool): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="906.16">+()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="922.16">-setupLabel(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="295.096" y="938.16">-colorLabel(): void</text>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="474" y="133" width="356.5" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="474" y="133" width="356.5" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="652.25" y="153">Field</text>
-    <rect style="fill: #ffffff" x="474" y="161" width="356.5" height="52"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="474" y="161" width="356.5" height="52"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="174.2">-pieces: List&lt;Piece&gt;</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="190.2">-currentColor: string</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="206.2">-index: int</text>
-    <rect style="fill: #ffffff" x="474" y="213" width="356.5" height="132"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="474" y="213" width="356.5" height="132"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="226.2">+Field(i:int): Field</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="242.2">+IncomingPiece(piece:Piece): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="258.2">+OutGoingPiece(piece:Piece): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="274.2">+EnemyDominated(incomingColor:string): bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="290.2">+SingleEnemy(incomingColor:string): bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="306.2">+IsHomeField(): bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="322.2">+IsHomeLane(): bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477" y="338.2">+HasFriendlyPiece(incomingColor:string): bool</text>
+    <rect style="fill: #ffffff" x="1164.73" y="572.506" width="348.8" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1164.73" y="572.506" width="348.8" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1339.13" y="592.506">Piece</text>
+    <rect style="fill: #ffffff" x="1164.73" y="600.506" width="348.8" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1164.73" y="600.506" width="348.8" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="613.706">+Position: int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="629.706">+Number: int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="645.706">+Color: string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="661.706">+IsHome: bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="677.706">-route: List&lt;int&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="693.706">-gui: GUI</text>
+    <rect style="fill: #ffffff" x="1164.73" y="700.506" width="348.8" height="244"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1164.73" y="700.506" width="348.8" height="244"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="713.706">+Piece(playerColor:string,number:int): Piece</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="729.706">+Move(diceroll:int): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="745.706">+SendToStart(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="761.706">+Overtakes(p:Piece,diceroll:int): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="777.706">+CanLeaveStart(): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="793.706">+LandsOnField(diceroll:int): int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="809.706">+IndexOnRoute(i:int): int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="825.706">+()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="841.706">-createRoute(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="857.706">-startExit(): int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="873.706">-homeLaneEntry(): int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="889.706">-homeLaneStart(): int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="905.706">-homeLaneEnd(): int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="921.706">-onClick(sender:object,e:EventArgs): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1167.73" y="937.706">-moveGraphic(): void</text>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="888" y="131" width="348.8" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="888" y="131" width="348.8" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1062.4" y="151">Piece</text>
-    <rect style="fill: #ffffff" x="888" y="159" width="348.8" height="84"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="888" y="159" width="348.8" height="84"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="172.2">+Position: int</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="188.2">+Number: int</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="204.2">+Color: string</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="220.2">+IsHome: bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="236.2">-route: List&lt;int&gt;</text>
-    <rect style="fill: #ffffff" x="888" y="243" width="348.8" height="212"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="888" y="243" width="348.8" height="212"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="256.2">+Piece(playerColor:string,number:int): Piece</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="272.2">+Move(diceroll:int): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="288.2">+SendToStart(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="304.2">+Overtakes(p:Piece,diceroll:int): bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="320.2">+CanLeaveStart(): bool</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="336.2">+LandsOnField(diceroll:int): int</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="352.2">+IndexOnRoute(i:int): int</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="368.2">+()</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="384.2">-createRoute(): void</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="400.2">-startExit(): int</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="416.2">-homeLaneEntry(): int</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="432.2">-homeLaneStart(): int</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="891" y="448.2">-homeLaneEnd(): int</text>
+    <rect style="fill: #ffffff" x="727.292" y="134.403" width="302.6" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="727.292" y="134.403" width="302.6" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="878.592" y="154.403">GUI</text>
+    <rect style="fill: #ffffff" x="727.292" y="162.403" width="302.6" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="727.292" y="162.403" width="302.6" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="175.603">+GameDie: Die</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="191.603">+Dialog: DialogBox</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="207.603">-border: List&lt;Label&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="223.603">-parent: Game</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="239.603">-playerMenu: PlayerSelectionMenu</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="255.603">-winnerScreen: EndScreen</text>
+    <rect style="fill: #ffffff" x="727.292" y="262.403" width="302.6" height="244"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="727.292" y="262.403" width="302.6" height="244"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="275.603">+GUI(parent:Game): GUI</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="291.603">+ChangeBorderColor(color:string): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="307.603">+ExitPlayerSelectionMenu(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="323.603">+DieRolled(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="339.603">+FieldClicked(index:int): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="355.603">+ShowEndScreen(winner:Player): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="371.603">+Reset(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="387.603">+GetColor(color:string): Color</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="403.603">+StartLocation(color:string): Point</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="419.603">+FieldLocation(i:int): Point</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="435.603">+()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="451.603">-setupWindow(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="467.603">-setupElements(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="483.603">-setupBorder(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="730.292" y="499.603">-drawStartZone(): void</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="816.181,456 846.505,456 846.505,429 888,429 "/>
-    <polygon style="fill: #000000" points="791.01,456 805.01,451.2 819.01,456 805.01,460.8 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="791.01,456 805.01,451.2 819.01,456 805.01,460.8 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="848.505" y="438.5"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="823.01" y="452"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="884" y="425"></text>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1056.07,320.403 1070.54,320.403 1070.54,341.657 1096.18,341.657 "/>
+    <polygon style="fill: #000000" points="1030.9,320.403 1044.9,315.603 1058.9,320.403 1044.9,325.203 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1030.9,320.403 1044.9,315.603 1058.9,320.403 1044.9,325.203 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1072.54" y="327.03"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1062.9" y="316.403"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1092.18" y="337.657"> 1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1092.18" y="353.657"></text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="431.272,383 445.545,383 445.545,456 470.99,456 "/>
-    <polygon style="fill: #000000" points="406.1,383 420.1,378.2 434.1,383 420.1,387.8 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="406.1,383 420.1,378.2 434.1,383 420.1,387.8 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="447.545" y="415.5"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="438.1" y="379"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="466.99" y="452"></text>
+    <rect style="fill: #e6e6fa" x="1096.18" y="135.409" width="859.255" height="412.495"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1096.18" y="135.409" width="859.255" height="412.495"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1525.81" y="346.457">
+      <tspan x="1525.81" y="346.457"></tspan>
+    </text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="431.272,319 446.547,319 446.547,239 472.995,239 "/>
-    <polygon style="fill: #000000" points="406.1,319 420.1,314.2 434.1,319 420.1,323.8 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="406.1,319 420.1,314.2 434.1,319 420.1,323.8 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="448.547" y="275"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="438.1" y="315"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="468.995" y="235"></text>
+    <rect style="fill: #ffffff" x="1488.99" y="336.258" width="418.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1488.99" y="336.258" width="418.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1698.04" y="356.258">PlayerSelectionMenu</text>
+    <rect style="fill: #ffffff" x="1488.99" y="364.258" width="418.1" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1488.99" y="364.258" width="418.1" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1491.99" y="377.458">-parent: GUI</text>
+    <rect style="fill: #ffffff" x="1488.99" y="384.258" width="418.1" height="132"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1488.99" y="384.258" width="418.1" height="132"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1491.99" y="397.458">+PlayerSelectionMenu(parent:gui): PlayerSelectionMenu</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1491.99" y="413.458">+GetPlayers(): List&lt;PlayerSelect&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1491.99" y="429.458">+()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1491.99" y="445.458">-addTitle(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1491.99" y="461.458">-addStart(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1491.99" y="477.458">-addColors(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1491.99" y="493.458">-activePlayers(): int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1491.99" y="509.458">-startClicked(sender:object,e:EventArgs): void</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="235.55,466.172 235.55,472 246.1,472 246.1,489 "/>
-    <polygon style="fill: #000000" points="235.55,441 240.35,455 235.55,469 230.75,455 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="235.55,441 240.35,455 235.55,469 230.75,455 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="240.825" y="468"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="246.55" y="453"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="250.1" y="485"></text>
+    <rect style="fill: #ffffff" x="1554.87" y="584.168" width="395" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1554.87" y="584.168" width="395" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1752.37" y="604.168">PlayerSelect</text>
+    <rect style="fill: #ffffff" x="1554.87" y="612.168" width="395" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1554.87" y="612.168" width="395" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1557.87" y="625.368">-playerColor: string</text>
+    <rect style="fill: #ffffff" x="1554.87" y="632.168" width="395" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1554.87" y="632.168" width="395" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1557.87" y="645.368">+PlayerSelect(color:string,xPos:int): PlayerSelect</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1557.87" y="661.368">+GetColor(): string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1557.87" y="677.368">+IsHuman(): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1557.87" y="693.368">+IsActive(): bool</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1557.87" y="709.368">+()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1557.87" y="725.368">-onClick(sender:object,e:EventArgs): void</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="856.677,239 866.25,239 866.25,293 886.995,293 "/>
-    <polygon style="fill: #ffffff" points="831.505,239 845.505,234.2 859.505,239 845.505,243.8 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="831.505,239 845.505,234.2 859.505,239 845.505,243.8 "/>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="868.25" y="262"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="863.505" y="235"></text>
-    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="882.995" y="289"></text>
+    <rect style="fill: #ffffff" x="1142.6" y="160.644" width="264.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1142.6" y="160.644" width="264.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1274.65" y="180.644">DialogBox</text>
+    <rect style="fill: #ffffff" x="1142.6" y="188.644" width="264.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1142.6" y="188.644" width="264.1" height="8"/>
+    <rect style="fill: #ffffff" x="1142.6" y="196.644" width="264.1" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1142.6" y="196.644" width="264.1" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1145.6" y="209.844">+Write(msg:string): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1145.6" y="225.844">+WriteLine(msg:string): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1145.6" y="241.844">+DialogBox(parent:GUI): DialogBox</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="446.436,727 1062.4,727 1062.4,455 "/>
-    <polygon style="fill: #ffffff" points="446.436,719 430.436,727 446.436,735 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="446.436,719 430.436,727 446.436,735 "/>
+    <rect style="fill: #ffffff" x="1487.87" y="150.347" width="264.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1487.87" y="150.347" width="264.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1619.92" y="170.347">EndScreen</text>
+    <rect style="fill: #ffffff" x="1487.87" y="178.347" width="264.1" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1487.87" y="178.347" width="264.1" height="68"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1490.87" y="191.547">-parent: GUI</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1490.87" y="207.547">-winner: Label</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1490.87" y="223.547">-replay: Label</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1490.87" y="239.547">-quit: Label</text>
+    <rect style="fill: #ffffff" x="1487.87" y="246.347" width="264.1" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1487.87" y="246.347" width="264.1" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1490.87" y="259.547">+EndScreen(parent:GUI): EndScreen</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1490.87" y="275.547">+Display(color:string): void</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="446.436,679 631,679 631,546 "/>
-    <polygon style="fill: #ffffff" points="446.436,671 430.436,679 446.436,687 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="446.436,671 430.436,679 446.436,687 "/>
+    <rect style="fill: #ffffff" x="1136.84" y="290.858" width="325.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1136.84" y="290.858" width="325.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1299.69" y="310.858">Die</text>
+    <rect style="fill: #ffffff" x="1136.84" y="318.858" width="325.7" height="84"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1136.84" y="318.858" width="325.7" height="84"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="332.058">+Value: int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="348.058">-parent: GUI</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="364.058">-sideN: Image</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="380.058">-rng: Random</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="396.058">-enabled: bool</text>
+    <rect style="fill: #ffffff" x="1136.84" y="402.858" width="325.7" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1136.84" y="402.858" width="325.7" height="116"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="416.058">+Die(parent:GUI): Die</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="432.058">+OnClick(sender:object,e:EventArgs): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="448.058">+Enable(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="464.058">+Disable(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="480.058">+()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="496.058">-changeImage(): void</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.84" y="512.058">-moveAround(): void</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1123.24,724.176 1137.9,724.176 1137.9,758.506 1163.72,758.506 "/>
+    <polygon style="fill: #000000" points="1098.07,724.176 1112.07,719.376 1126.07,724.176 1112.07,728.976 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1098.07,724.176 1112.07,719.376 1126.07,724.176 1112.07,728.976 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1139.9" y="737.341"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1130.07" y="720.176"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1159.72" y="754.506"> 4</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1159.72" y="770.506"></text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="650.378,440.84 669.123,440.84 669.123,672.176 717.464,672.176 "/>
+    <polygon style="fill: #000000" points="625.206,440.84 639.206,436.04 653.206,440.84 639.206,445.64 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="625.206,440.84 639.206,436.04 653.206,440.84 639.206,445.64 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="671.123" y="552.508"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="657.206" y="436.84"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="713.464" y="668.176"> 4</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="713.464" y="684.176"></text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1698.04,541.43 1698.04,566.764 1752.37,566.764 1752.37,584.168 "/>
+    <polygon style="fill: #000000" points="1698.04,516.258 1702.84,530.258 1698.04,544.258 1693.24,530.258 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1698.04,516.258 1702.84,530.258 1698.04,544.258 1693.24,530.258 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1725.2" y="562.764"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1709.04" y="528.258"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1756.37" y="564.168"> 4</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1756.37" y="580.168"></text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="650.378,244.84 682.744,244.84 682.744,320.403 726.283,320.403 "/>
+    <polygon style="fill: #000000" points="625.206,244.84 639.206,240.04 653.206,244.84 639.206,249.64 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="625.206,244.84 639.206,240.04 653.206,244.84 639.206,249.64 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="684.744" y="278.621"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="657.206" y="240.84"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="722.283" y="316.403">1</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="753.752" y="53.2224" width="249.05" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="753.752" y="53.2224" width="249.05" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="878.277" y="73.2224">System.Windows.Forms.Form</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="878.592,115.161 878.592,99.8134 878.277,99.8134 878.277,82.2297 "/>
+    <polygon style="fill: #ffffff" points="870.592,115.161 878.592,131.161 886.592,115.161 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="870.592,115.161 878.592,131.161 886.592,115.161 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1136.89" y="53.12" width="273.8" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1136.89" y="53.12" width="273.8" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1273.79" y="73.12">System.Windows.Forms.TextBox</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1274.65,141.402 1274.65,112.883 1273.79,112.883 1273.79,82.1273 "/>
+    <polygon style="fill: #ffffff" points="1266.65,141.402 1274.65,157.402 1282.65,141.402 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1266.65,141.402 1274.65,157.402 1282.65,141.402 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1690.24" y="57.8768" width="252.35" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1690.24" y="57.8768" width="252.35" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1816.42" y="77.8768">System.Windows.Forms.Panel</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1770.2,220.347 1816.42,220.347 1816.42,86.8841 "/>
+    <polygon style="fill: #ffffff" points="1770.2,212.347 1754.2,220.347 1770.2,228.347 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1770.2,212.347 1754.2,220.347 1770.2,228.347 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1698.04,317.034 1698.04,307.606 1816.41,307.606 1816.41,86.876 "/>
+    <polygon style="fill: #ffffff" points="1690.04,317.034 1698.04,333.034 1706.04,317.034 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1690.04,317.034 1698.04,333.034 1706.04,317.034 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1293.05" y="10.3092" width="295.35" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1293.05" y="10.3092" width="295.35" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1440.73" y="30.3092">System.Windows.Forms.PictureBox</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1299.69,271.627 1299.69,260.04 1440.72,260.04 1440.72,39.3085 "/>
+    <polygon style="fill: #ffffff" points="1291.69,271.627 1299.69,287.627 1307.69,271.627 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1291.69,271.627 1299.69,287.627 1307.69,271.627 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="462.356,589.018 462.356,598.898 470.346,598.898 470.346,619.95 "/>
+    <polygon style="fill: #000000" points="462.356,563.846 467.156,577.846 462.356,591.846 457.556,577.846 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="462.356,563.846 467.156,577.846 462.356,591.846 457.556,577.846 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="466.351" y="594.898"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="473.356" y="575.846"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="474.346" y="615.95">76</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="345.09" y="1001.91" width="250.85" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="345.09" y="1001.91" width="250.85" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="470.515" y="1021.91">System.Windows.Forms.Label</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="470.346,964.206 470.346,981.434 470.515,981.434 470.515,1000.9 "/>
+    <polygon style="fill: #ffffff" points="478.346,964.206 470.346,948.206 462.346,964.206 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="478.346,964.206 470.346,948.206 462.346,964.206 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1192.15" y="1001.91" width="295.35" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1192.15" y="1001.91" width="295.35" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1339.82" y="1021.91">System.Windows.Forms.PictureBox</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1339.13,963.748 1339.13,981.205 1339.82,981.205 1339.82,1000.9 "/>
+    <polygon style="fill: #ffffff" points="1347.13,963.748 1339.13,947.748 1331.13,963.748 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1347.13,963.748 1339.13,947.748 1331.13,963.748 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1626.97" y="1003.09" width="250.85" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1626.97" y="1003.09" width="250.85" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1752.39" y="1023.09">System.Windows.Forms.Label</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1752.37,751.413 1752.37,875.632 1752.39,875.632 1752.39,1002.09 "/>
+    <polygon style="fill: #ffffff" points="1760.37,751.413 1752.37,735.413 1744.37,751.413 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1760.37,751.413 1752.37,735.413 1744.37,751.413 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="673.768,902.96 913.663,902.96 913.663,902.506 1164.73,902.506 "/>
+    <polygon style="fill: #ffffff" points="648.596,902.96 662.596,898.16 676.596,902.96 662.596,907.76 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="648.596,902.96 662.596,898.16 676.596,902.96 662.596,907.76 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="907.264,617.325 907.264,566.289 878.592,566.289 878.592,513.108 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="883.592,525.755 878.592,509.755 873.592,525.755 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1139.56,586.506 1057.6,586.506 1057.6,480.403 1029.89,480.403 "/>
+    <polygon style="fill: #ffffff" points="1164.73,586.506 1150.73,591.306 1136.73,586.506 1150.73,581.706 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1164.73,586.506 1150.73,591.306 1136.73,586.506 1150.73,581.706 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="673.768,838.96 694.944,838.96 694.944,480.403 727.292,480.403 "/>
+    <polygon style="fill: #ffffff" points="648.596,838.96 662.596,834.16 676.596,838.96 662.596,843.76 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="648.596,838.96 662.596,834.16 676.596,838.96 662.596,843.76 "/>
   </g>
 </svg>
