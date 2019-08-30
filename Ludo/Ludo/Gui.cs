@@ -33,6 +33,7 @@ namespace Ludo
             BackColor = GUI.GetColor("black");
             FormBorderStyle = FormBorderStyle.FixedSingle;
             StartPosition = FormStartPosition.CenterScreen;
+            Icon = (Icon)Properties.Resources.ResourceManager.GetObject("ludo");
         }
 
         private void setupElements()
